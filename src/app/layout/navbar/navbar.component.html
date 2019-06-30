@@ -1,0 +1,43 @@
+<mat-toolbar color="primary" class="my-toolbar mat-elevation-z6">
+
+  <mat-toolbar-row>
+
+    <div>
+
+      <ul fxLayout fxLayoutGap="16px" class="my-toolbar-items">
+        <li>
+          <button mat-button>
+            <mat-icon>directions_boat</mat-icon>
+            Smatch
+          </button>
+        </li>
+      </ul>
+    </div>
+
+    <div fxFlex fxLayout fxLayoutAlign="flex-end">
+
+      <ul fxLayout fxLayoutGap="16px" class="my-toolbar-items">
+
+        <li>
+          <button mat-icon-button fxHide.xs matTooltip="Espace détenteur" [matTooltipShowDelay]="0800">
+            <mat-icon>supervised_user_circle</mat-icon>
+          </button>
+        </li>
+
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="options" matTooltip="Options" [matTooltipShowDelay]="1000">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #options="matMenu">
+            <button mat-menu-item>
+              <mat-icon>exit_to_app</mat-icon>
+              <span>Se deconnecter</span>
+            </button>
+          </mat-menu>
+        </li>
+
+      </ul>
+    </div>
+
+  </mat-toolbar-row>
+</mat-toolbar>

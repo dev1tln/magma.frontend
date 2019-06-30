@@ -1,0 +1,32 @@
+.my-container {
+  position: absolute;
+  top: 54px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #eeeeee;
+  height: auto;
+}
+
+.mat-sidenav {
+  width: 200px;
+  margin: 0 0 5px;
+  padding: 0;
+  overflow: hidden;
+}
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 499px) {
+  .mat-sidenav {
+    width: 100%;
+  }
+}
+.toolbar-title {
+  margin: 0 16px 0 16px;
+}
+mat-nav-list a {
+  font-size: 16px;
+  line-height: 16px;
+}
+mat-nav-list a mat-icon {
+  padding-right: 10px;
+}
