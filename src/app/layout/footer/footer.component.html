@@ -1,0 +1,6 @@
+<nav mat-tab-nav-bar class="my-footbar">
+  <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link">
+    <mat-icon outlined>{{link.icon}}</mat-icon>
+    {{link.nom}}
+  </a>
+</nav>

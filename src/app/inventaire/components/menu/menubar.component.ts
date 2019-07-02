@@ -1,14 +1,14 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSidenav } from '@angular/material';
-import { SidenavService } from '../sidenav.service';
+import { SidenavService } from './sidenav.service';
 
 @Component({
   selector: 'app-menubar',
   templateUrl: './menubar.component.html',
   styleUrls: ['./menubar.component.scss']
 })
-export class MenuBarComponent implements OnInit {
+export class MenuInventaireComponent implements OnInit {
 
   @ViewChild('sidenav', { static: true }) public sidenav: MatSidenav;
 

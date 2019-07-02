@@ -1,0 +1,32 @@
+@import 'src/theme.scss';
+
+$accent: map-get($custom-theme, accent);
+
+.my-footbar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: mat-color($accent);
+  text-align: center;
+  display: flex;
+  justify-content: center;
+}
+
+.my-footbar :nth-child(1) {
+  height: 100%;
+}
+
+.my-footbar a {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.my-footbar a mat-icon {
+  margin-left: -0.4em;
+  font-size: 2.3em;
+}

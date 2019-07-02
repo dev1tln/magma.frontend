@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SidenavService } from '../sidenav.service';
+import { SidenavService } from '../../inventaire/components/menu/sidenav.service';
 
 @Component({
   selector: 'app-header',
@@ -10,8 +10,6 @@ import { SidenavService } from '../sidenav.service';
 export class HeaderComponent implements OnInit {
   constructor(
     private sidenav: SidenavService) { }
-
-  mobile$: Observable<boolean>;
 
   @Input() title: string;
 

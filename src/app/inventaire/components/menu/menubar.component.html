@@ -6,7 +6,7 @@
     <mat-toolbar>
       <mat-toolbar-row>
         <div fxFlex fxLayoutAlign="space-between center">
-          <h2 class="toolbar-title">Menu</h2>
+          <h2 class="toolbar-title">Options Inventaire</h2>
           <button mat-icon-button (click)="sidenav.close()">
             <mat-icon matListIcon>close</mat-icon>
           </button>
@@ -21,6 +21,8 @@
 
   </mat-sidenav>
   <mat-sidenav-content>
+    <app-navbar></app-navbar>
     <router-outlet></router-outlet>
+    <app-footer></app-footer>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -7,6 +7,8 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayerModule } from './layout/layout.module';
+import { InventaireModule } from './inventaire/inventaires.module';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { LayerModule } from './layout/layout.module';
     HttpClientModule,
     BrowserAnimationsModule,
     LayerModule,
+    InventaireModule,
+    CoreModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

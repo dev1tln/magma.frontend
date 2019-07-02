@@ -5,4 +5,8 @@ import { Component } from '@angular/core';
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })
-export class FooterComponent { }
+export class FooterComponent {
+  links = [{ nom: 'Inventaire', icon: 'assignment' }, { nom: 'Referenciel', icon: 'search' }];
+  activeLink = this.links[0];
+
+}
