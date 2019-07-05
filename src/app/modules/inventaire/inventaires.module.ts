@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageInventaireComponent } from './pages/inventaire/inventaire.page';
-import { LayerModule } from '../layout/layout.module';
+import { HomeInventaireComponent } from './pages/homeInventaire/homeInventaire.page';
+import { LayerModule } from '../../layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from '../../material.module';
 import { InventaireComponent } from './components/listInventaire/inventaire.component';
-import { MenuInventaireComponent } from './components/menu/menubar.component';
-import { AppRoutingModule } from '../app-routing.module';
+import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
+import { AppRoutingModule } from '../../app-routing.module';
 
 @NgModule({
   imports: [
@@ -19,13 +19,11 @@ import { AppRoutingModule } from '../app-routing.module';
     LayerModule,
   ],
   declarations: [
-    PageInventaireComponent,
+    HomeInventaireComponent,
     InventaireComponent,
     MenuInventaireComponent,
   ],
-  exports: [MenuInventaireComponent, PageInventaireComponent],
+  exports: [MenuInventaireComponent, HomeInventaireComponent],
   providers: [],
 })
-export class InventaireModule {
-
-}
+export class InventaireModule { }

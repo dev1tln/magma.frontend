@@ -7,7 +7,7 @@ import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayerModule } from './layout/layout.module';
-import { InventaireModule } from './inventaire/inventaires.module';
+import { InventaireModule } from './modules/inventaire/inventaires.module';
 import { CoreModule } from './core/core.module';
 
 @NgModule({

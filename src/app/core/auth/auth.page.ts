@@ -23,7 +23,7 @@ export class PageAuthComponent implements OnInit {
 
   onSubmit(data) {
     if (data.identifiant === 'root' && data.password === 'root') {
-      this.router.navigate(['/inventaire']);
+      this.router.navigate(['/choixUnite']);
     }
   }
 

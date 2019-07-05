@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
-import { SidenavService } from '../../inventaire/components/menu/sidenav.service';
+import { SidenavService } from '../../modules/inventaire/components/menuInventaire/sidenav.service';
 
 @Component({
   selector: 'app-header',
