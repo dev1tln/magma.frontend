@@ -41,6 +41,7 @@ export interface Article {
   srvpou: string;
   typart: string;
   numser: string;
+  pictureUrl: string;
   localisation: Localisation;
 }
 
