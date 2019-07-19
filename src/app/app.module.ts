@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LayerModule } from './layout/layout.module';
 import { InventaireModule } from './modules/inventaire/inventaires.module';
 import { CoreModule } from './core/core.module';
+import { UniteModule } from './modules/unite/unite.module';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { CoreModule } from './core/core.module';
     BrowserAnimationsModule,
     LayerModule,
     InventaireModule,
+    UniteModule,
     CoreModule,
   ],
   providers: [],

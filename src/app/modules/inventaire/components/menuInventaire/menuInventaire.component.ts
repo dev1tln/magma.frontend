@@ -5,8 +5,8 @@ import { SidenavService } from './sidenav.service';
 
 @Component({
   selector: 'app-menubar',
-  templateUrl: './menubar.component.html',
-  styleUrls: ['./menubar.component.scss']
+  templateUrl: './menuInventaire.component.html',
+  styleUrls: ['./menuInventaire.component.scss']
 })
 export class MenuInventaireComponent implements OnInit {
 
