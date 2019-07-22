@@ -1,6 +1,6 @@
 <div id='my-background-auth'>
-  <section class='auth-logo' align="center">
-    <img id='img-auth' src='assets/img/test.png' alt="Logo maars" />
+  <section class='auth-logo'>
+    <img id='img-auth' src='../../../assets/img/test.png' alt="Logo maars" />
   </section>
   <section class='auth-mat-card'>
     <form [formGroup]='checkoutForm' novalidate (ngSubmit)="onSubmit(checkoutForm.value)">
@@ -16,7 +16,7 @@
             <input matInput type="password" placeholder="Mot de passe" formControlName="password">
           </mat-form-field>
         </mat-card-content>
-        <mat-card-actions align="center">
+        <mat-card-actions>
           <button mat-raised-button color="accent">Valider</button>
         </mat-card-actions>
       </mat-card>
