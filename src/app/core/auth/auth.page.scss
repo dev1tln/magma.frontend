@@ -12,9 +12,13 @@ $primary: map-get($custom-theme, primary);
   background: mat-color($primary);
 }
 
+
 #img-auth {
   height: 10em;
   width: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
 }
 
 .auth-logo {
