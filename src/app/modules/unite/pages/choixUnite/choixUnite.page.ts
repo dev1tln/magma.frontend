@@ -2,6 +2,9 @@ import { Component , OnInit, OnDestroy} from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Subscription } from 'rxjs';
+import { Unite } from 'src/app/shared/models/model';
+
+export interface Unite{};
 
 // We use the gql tag to parse our query string into a query document
 export const QueryUnites = gql`
@@ -13,11 +16,6 @@ query unites{
 }
 `;
 
-
-interface UnitesItem {
-  id: string;
-  libunt: string;
-}
 @Component({
   selector: 'app-choix-unite',
   templateUrl: 'choixUnite.component.html',
@@ -27,7 +25,7 @@ interface UnitesItem {
 
 export class PageChoixUniteComponent implements OnInit, OnDestroy {
   loading: boolean;
-  unitesItem: UnitesItem[] = [];
+  unitesItem: Unite[] = [];
 
   private querySubscription: Subscription;
 
