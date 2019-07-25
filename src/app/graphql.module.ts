@@ -17,6 +17,7 @@ export class GraphQLModule {
       uri: 'http://localhost:3000',
     });
 
+    /*
     const subscriptionLink = new WebSocketLink({
       uri:
         'ws://localhost:3000',
@@ -27,13 +28,14 @@ export class GraphQLModule {
         }
       }
     });
+    */
 
     const link = split(
       ({ query }) => {
         const { kind, operation } = getMainDefinition(query);
         return kind === 'OperationDefinition' && operation === 'subscription';
       },
-      subscriptionLink,
+      //subscriptionLink,
       httpLink
     );
 
