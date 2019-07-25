@@ -17,18 +17,18 @@ export class GraphQLModule {
       uri: 'http://localhost:3000',
     });
 
-    
+
     const subscriptionLink = new WebSocketLink({
       uri:
-        'ws://localhost:3000',
+        'ws://localhost:3000/graphql',
       options: {
-        reconnect: false,
+        reconnect: true,
         connectionParams: {
           authToken: localStorage.getItem('token') || null
         }
       }
     });
-    
+
 
     const link = split(
       ({ query }) => {
