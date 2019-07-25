@@ -17,25 +17,25 @@ export class GraphQLModule {
       uri: 'http://localhost:3000',
     });
 
-    /*
+    
     const subscriptionLink = new WebSocketLink({
       uri:
         'ws://localhost:3000',
       options: {
-        reconnect: true,
+        reconnect: false,
         connectionParams: {
           authToken: localStorage.getItem('token') || null
         }
       }
     });
-    */
+    
 
     const link = split(
       ({ query }) => {
         const { kind, operation } = getMainDefinition(query);
         return kind === 'OperationDefinition' && operation === 'subscription';
       },
-      //subscriptionLink,
+      subscriptionLink,
       httpLink
     );
 
