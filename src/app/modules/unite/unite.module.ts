@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { PageChoixUniteComponent } from './pages/choixUnite/choixUnite.page';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [PageChoixUniteComponent],
   imports: [
-    CommonModule
+    CoreModule
   ]
 })
 export class UniteModule { }

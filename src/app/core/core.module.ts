@@ -12,6 +12,6 @@ import { MaterialModule } from '../material.module';
     ReactiveFormsModule,
   ],
   declarations: [PageAuthComponent],
-  exports: [PageAuthComponent]
+  exports: [PageAuthComponent, MaterialModule, CommonModule]
 })
 export class CoreModule { }
