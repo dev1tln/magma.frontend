@@ -8,6 +8,7 @@ import { MaterialModule } from '../../material.module';
 import { InventaireComponent } from './components/listInventaire/inventaire.component';
 import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
 import { AppRoutingModule } from '../../app-routing.module';
+import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
 
 @NgModule({
   imports: [
@@ -19,11 +20,11 @@ import { AppRoutingModule } from '../../app-routing.module';
     LayerModule,
   ],
   declarations: [
+    HeaderInventaireComponent,
     HomeInventaireComponent,
     InventaireComponent,
     MenuInventaireComponent,
   ],
-  exports: [MenuInventaireComponent, HomeInventaireComponent],
   providers: [],
 })
 export class InventaireModule { }

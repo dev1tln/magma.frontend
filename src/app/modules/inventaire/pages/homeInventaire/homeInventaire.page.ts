@@ -6,12 +6,12 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-page-inventaire',
-  templateUrl: './homeInventaire.component.html',
-    styleUrls: ['./homeInventaire.component.scss']
+  templateUrl: './homeInventaire.page.html',
+  styleUrls: ['./homeInventaire.page.scss']
 })
 
 
-export class HomeInventaireComponent  {
+export class HomeInventaireComponent {
 
 }
 

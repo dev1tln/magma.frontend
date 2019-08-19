@@ -1,6 +1,7 @@
 @import 'src/theme.scss';
 
 $primary: map-get($custom-theme, primary);
+$warn: map-get($custom-theme, warn);
 
 #my-background-auth {
   z-index: 2;
@@ -9,9 +10,7 @@ $primary: map-get($custom-theme, primary);
   top: 0;
   left: 0;
   right: 0;
-  background: mat-color($primary);
 }
-
 
 #img-auth {
   height: 10em;
@@ -21,16 +20,59 @@ $primary: map-get($custom-theme, primary);
   display: flex;
 }
 
+.img-responsive h1 {
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 56px;
+  margin: 15px 5px;
+  margin-top: -5px;
+}
+
 .auth-logo {
   margin-top: 20%;
   padding-bottom: 10%;
   overflow: hidden;
 }
 
-.auth-mat-card {
+.auth-card {
   margin: 10px;
+  margin-top: 30px;
+  background: mat-color($primary, lighter);
 }
 
+mat-card-content mat-icon {
+  margin-right: 10px;
+}
 mat-form-field {
   width: 70%;
+}
+
+.footerConnect-auth {
+  color: gray;
+  font-size: 0.7em;
+  margin-left: 0.9em;
+}
+
+.footer-auth {
+  margin-top: 3.5em;
+  display: flex;
+}
+
+.footerButton-auth {
+  color: mat-color($warn);
+}
+
+.trait-auth {
+  margin-bottom: -3.5em;
+  background-color: gray;
+  height: 1pt;
+  width: 100%;
+}
+
+.mat-card-content p {
+  text-align: left;
+}
+
+#hideIcon {
+  font-size: 1.2em;
 }

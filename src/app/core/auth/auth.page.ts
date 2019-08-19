@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -9,23 +10,27 @@ import { Router } from '@angular/router';
 })
 export class PageAuthComponent implements OnInit {
   checkoutForm: FormGroup;
+  hide = false;
 
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.checkoutForm = new FormGroup({
-      identifiant: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      password: new FormControl('', [Validators.required]),
+    this.checkoutForm = this.formBuilder.group({
+      identifiant: ['', [Validators.required, Validators.maxLength(60)]],
+      password: ['', [Validators.required]],
     });
   }
 
+  get formControls() { return this.checkoutForm.controls; }
+
   onSubmit(data) {
-    if (data.identifiant === 'root' && data.password === 'root') {
-      this.router.navigate(['/choixUnite']);
+    if (this.checkoutForm.dirty && this.checkoutForm.valid) {
+      this.auth.login(data.identifiant, data.password);
     }
   }
-
 
 }

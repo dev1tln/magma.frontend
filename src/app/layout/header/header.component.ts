@@ -1,6 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs';
-import { SidenavService } from '../../modules/inventaire/components/menuInventaire/sidenav.service';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -8,14 +6,9 @@ import { SidenavService } from '../../modules/inventaire/components/menuInventai
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  constructor(
-    private sidenav: SidenavService) { }
+  constructor() { }
 
   @Input() title: string;
 
   ngOnInit(): void { }
-
-  toggleSidenav() {
-    this.sidenav.open();
-  }
 }
