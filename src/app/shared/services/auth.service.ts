@@ -3,6 +3,7 @@ import { Apollo } from 'apollo-angular';
 
 import { AUTH_USER } from 'src/app/shared/graphql/mutations';
 import { USER_INFO } from 'src/app/shared/graphql/querries';
+import { User } from '../models/model';
 
 @Injectable()
 export class AuthService {
@@ -16,6 +17,7 @@ export class AuthService {
   }
 
   login(identifiant: string, password: string) {
+    // Init du token
     this.apollo.mutate({
       mutation: {
         AUTH_USER,
@@ -24,21 +26,17 @@ export class AuthService {
         identifiant,
         password
       }
-    }).subscribe(data => localStorage.setItem('token', data.acces_token));
+    }).subscribe(result => localStorage.setItem('token', result.data.acces_token));
 
-    const user = {};
-
-    this.apollo.watchQuery({
+    // On charge les infos sur l'utilisateur
+    this.apollo.watchQuery<any>({
       query: {
         USER_INFO,
       },
       variables: {
         identifiant
       }
-    }).valueChanges.subscribe(data => {
-      user = data.user;
-    });
-
+    }).valueChanges.subscribe(result => this.apollo.getClient().writeData({ data: { user: result.data.user } }));
   }
 
   logout() {
