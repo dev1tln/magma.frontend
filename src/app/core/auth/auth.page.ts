@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import { first, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -11,6 +13,8 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class PageAuthComponent implements OnInit {
   checkoutForm: FormGroup;
   hide = false;
+  submitted = false;
+  loading = false;
 
   constructor(
     private router: Router,
@@ -27,9 +31,20 @@ export class PageAuthComponent implements OnInit {
 
   get formControls() { return this.checkoutForm.controls; }
 
-  onSubmit(data) {
+  onSubmit(values) {
+    this.submitted = true;
+
     if (this.checkoutForm.dirty && this.checkoutForm.valid) {
-      this.auth.login(data.identifiant, data.password);
+      this.loading = true;
+
+      this.auth.login(values.identifiant, values.password).pipe(first()).subscribe(
+        data => {
+          if (data !== null) {
+            this.router.navigateByUrl('/inventaire');
+          }
+          this.loading = false;
+        },
+      );
     }
   }
 

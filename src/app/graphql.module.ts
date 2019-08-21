@@ -22,7 +22,7 @@ export class GraphQLModule {
 
     const subscriptionLink = new WebSocketLink({
       uri:
-        `ws://${environment.graphqlUrl}`,
+        `ws://${environment.graphqlUrl}/graphql`,
       options: {
         reconnect: true,
       }
@@ -30,10 +30,9 @@ export class GraphQLModule {
 
     const error = onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors) {
-        graphQLErrors.map(({ message, locations, path }) =>
-          console.log(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
-          ),
+        graphQLErrors.map(({ message, locations, path }) => {
+          return graphQLErrors;
+        }
         );
       }
 

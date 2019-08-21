@@ -4,7 +4,7 @@ import gql from 'graphql-tag';
 
 export const USER_INFO = gql`
   query userInfo($identifiant: String!){
-    user(where: {identifiant: "jessy.tavares"}){
+    user(where: {identifiant: $identifiant}){
       nom, prenom, identifiant, role,
       unites{
         id, cdeunt, libunt,
