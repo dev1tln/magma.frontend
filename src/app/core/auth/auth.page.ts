@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 })
 export class PageAuthComponent implements OnInit {
   checkoutForm: FormGroup;
-
+ 
   constructor(
     private router: Router
   ) { }
@@ -23,7 +23,7 @@ export class PageAuthComponent implements OnInit {
 
   onSubmit(data) {
     if (data.identifiant === 'root' && data.password === 'root') {
-      this.router.navigate(['/choixUnite']);
+      this.router.navigate(['/homeInventaire']);
     }
   }
 
