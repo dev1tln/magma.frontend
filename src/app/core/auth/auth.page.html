@@ -1,25 +1,56 @@
 <div id='my-background-auth' style="text-align:center">
-  <section class="img-responsive" >
-    <img  id='img-auth' src='../../../assets/img/logo.png' alt="Logo magma" />
+  <section class="img-responsive">
+    <img id='img-auth' src='/assets/img/logo.png' alt="Logo magma" />
+    <h1>MAGMA</h1>
   </section>
   <section class='auth-mat-card'>
     <form [formGroup]='checkoutForm' novalidate (ngSubmit)="onSubmit(checkoutForm.value)">
       <mat-card class='auth-card'>
         <mat-card-header>
-          <mat-card-title>Se connecter</mat-card-title>
+          <mat-card-title>Connection</mat-card-title>
         </mat-card-header>
+
         <mat-card-content>
-          <mat-form-field>
-            <input matInput type="text" placeholder="Identifiant" formControlName="identifiant">
-          </mat-form-field>
-          <mat-form-field>
-            <input matInput type="password" placeholder="Mot de passe" formControlName="password">
-          </mat-form-field>
+          <div id="formAuth">
+            <p>
+              <mat-icon>person</mat-icon>
+              <mat-form-field>
+                <input matInput type="text" placeholder="Identifiant" formControlName="identifiant"
+                  [ngClass]="{ 'is-invalid': submitted && formControls.identifiant.errors }">
+              </mat-form-field>
+            </p>
+            <p>
+              <mat-icon> vpn_key</mat-icon>
+              <mat-form-field>
+                <input matInput placeholder="Mot de passe" formControlName="password"
+                  [type]="hide ? 'text' : 'password'">
+              </mat-form-field>
+              <span (click)="hide = !hide" aria-label="'Hide password'" aria-pressed="hide">
+                <mat-icon id="hideIcon">{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+              </span>
+            </p>
+            <div *ngIf="submitted" class="invalid-feedback">
+              <div>Erreur lors de la connexion</div>
+            </div>
+          </div>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="accent">Valider</button>
+          <button *ngIf="!loading" mat-raised-button color="accent" type="submit"
+            [disabled]="!checkoutForm.valid">Valider</button>
+          <img *ngIf="loading" alt="loading" src='/assets/img/loading.gif' />
         </mat-card-actions>
       </mat-card>
     </form>
   </section>
+
+  <div class="footer-auth">
+    <p class="footerConnect-auth">Informations de connexion oubliées ?</p>
+    <button class="footerButton-auth" mat-button>Obtenez de l'aide</button>
+  </div>
+  <div class="trait-auth"></div>
+  <div class="footer-auth">
+    <p class="footerConnect-auth">Vous n'avez pas de compte ?</p>
+    <button class="footerButton-auth" mat-button>Inscrivez-vous</button>
+  </div>
+
 </div>

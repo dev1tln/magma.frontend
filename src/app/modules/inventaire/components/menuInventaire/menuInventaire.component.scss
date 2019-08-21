@@ -12,16 +12,16 @@ $primary: map-get($custom-theme, primary);
   height: auto;
 }
 
-.mat-sidenav {
-  width: 200px;
+#slider-inventaire {
+  width: 250px;
   margin: 0 0 5px;
   padding: 0;
   overflow: hidden;
 }
 
 @media only screen and (min-device-width: 320px) and (max-device-width: 499px) {
-  .mat-sidenav {
-    width: 80%;
+  #slider-inventaire {
+    width: 100%;
   }
 }
 .toolbar-title {

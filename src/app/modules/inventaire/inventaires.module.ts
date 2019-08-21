@@ -8,7 +8,8 @@ import { MaterialModule } from '../../material.module';
 import { InventaireComponent } from './components/listInventaire/inventaire.component';
 import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
 import { AppRoutingModule } from '../../app-routing.module';
-
+import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
+import {QrScannerComponent} from 'angular2-qrscanner';
 @NgModule({
   imports: [
     CommonModule,
@@ -19,11 +20,13 @@ import { AppRoutingModule } from '../../app-routing.module';
     LayerModule,
   ],
   declarations: [
+    HeaderInventaireComponent,
     HomeInventaireComponent,
     InventaireComponent,
     MenuInventaireComponent,
+    QrScannerComponent,
   ],
-  exports: [MenuInventaireComponent, HomeInventaireComponent],
   providers: [],
 })
 export class InventaireModule { }
+

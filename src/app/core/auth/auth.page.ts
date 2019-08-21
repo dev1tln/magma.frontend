@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
+import { first, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 
 @Component({
   selector: 'app-auth',
@@ -9,23 +12,40 @@ import { Router } from '@angular/router';
 })
 export class PageAuthComponent implements OnInit {
   checkoutForm: FormGroup;
- 
+  hide = false;
+  submitted = false;
+  loading = false;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private auth: AuthService,
+    private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    this.checkoutForm = new FormGroup({
-      identifiant: new FormControl('', [Validators.required, Validators.maxLength(60)]),
-      password: new FormControl('', [Validators.required]),
+    this.checkoutForm = this.formBuilder.group({
+      identifiant: ['', [Validators.required, Validators.maxLength(60)]],
+      password: ['', [Validators.required]],
     });
   }
 
-  onSubmit(data) {
-    if (data.identifiant === 'root' && data.password === 'root') {
-      this.router.navigate(['/homeInventaire']);
+  get formControls() { return this.checkoutForm.controls; }
+
+  onSubmit(values) {
+    this.submitted = true;
+
+    if (this.checkoutForm.dirty && this.checkoutForm.valid) {
+      this.loading = true;
+
+      this.auth.login(values.identifiant, values.password).pipe(first()).subscribe(
+        data => {
+          if (data !== null) {
+            this.router.navigateByUrl('/inventaire');
+          }
+          this.loading = false;
+        },
+      );
     }
   }
-
 
 }

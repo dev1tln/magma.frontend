@@ -13,9 +13,8 @@ export interface Unite {
   dtepjc: Date;
   readonly libunt: string;
   typuni: string;
-  detenteurs: [User];
-  localisations: [Localisation];
-  inventaires: [Inventaire];
+  users: [User];
+  detentions: [Detention];
 }
 
 export interface Inventaire {
@@ -27,7 +26,7 @@ export interface Inventaire {
   cdevrf: string;
   obs: string;
   articles: [Article];
-  readonly unite: Unite;
+  readonly detention: Detention;
 }
 
 export interface Article {
@@ -42,12 +41,14 @@ export interface Article {
   typart: string;
   numser: string;
   pictureUrl: string;
-  localisation: Localisation;
+  detention: Detention;
 }
 
-export interface Localisation {
+export interface Detention {
   id: string;
   readonly lib: string;
+  unite: Unite;
+  inventaire: [Inventaire];
 }
 
 export enum UserType {

@@ -1,0 +1,31 @@
+<app-header-inventaire [title]="'Inventaire en cours'"></app-header-inventaire>
+
+<mat-accordion>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      SCAN
+    </mat-expansion-panel-header>
+
+    <qr-scanner
+    [debug]="true"
+    [canvasWidth]="300"
+    [canvasHeight]="400"
+    [stopAfterScan]="false"
+    [updateTime]="900"
+    (onRead)="decodedOutput($event)">
+    </qr-scanner>
+
+
+  </mat-expansion-panel>
+
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      INVENTAIRE
+    </mat-expansion-panel-header>
+
+    This the expansion 2 content
+
+  </mat-expansion-panel>
+
+</mat-accordion>

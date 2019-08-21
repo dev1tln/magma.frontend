@@ -1,13 +1,13 @@
 @import 'src/theme.scss';
 
-$accent: map-get($custom-theme, accent);
+$warn: map-get($custom-theme, warn);
 
 .my-footbar {
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  background-color: mat-color($accent);
+  background-color: mat-color($warn);
   text-align: center;
   display: flex;
   justify-content: center;

@@ -10,6 +10,7 @@ import { LayerModule } from './layout/layout.module';
 import { InventaireModule } from './modules/inventaire/inventaires.module';
 import { CoreModule } from './core/core.module';
 import { UniteModule } from './modules/unite/unite.module';
+import { AuthService } from './shared/services/auth.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { UniteModule } from './modules/unite/unite.module';
     UniteModule,
     CoreModule,
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,0 +1,21 @@
+<mat-vertical-stepper [linear]="true" #stepper>
+  <mat-step [stepControl]="uniteFormGroup">
+    <form [formGroup]="uniteFormGroup">
+      <ng-template matStepLabel>Choix unité</ng-template>
+
+      <mat-form-field>
+        <input matInput type="text" placeholder="Unité" formControlName="firstCtrl" required
+          [matAutocomplete]="autoGroup" />
+        <mat-autocomplete autoActiveFirstOption #autoGroup="matAutocomplete" [displayWith]="displayUnite">
+          <mat-option *ngFor="let unite of uniteGroupOptions | async" [value]="unite">
+            {{ unite.libunt }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+</mat-vertical-stepper>
