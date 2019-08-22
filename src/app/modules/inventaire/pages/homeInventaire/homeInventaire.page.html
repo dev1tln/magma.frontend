@@ -1,1 +1,19 @@
-<app-header-inventaire [title]="'Inventaire en cours'"></app-header-inventaire>
+<mat-tab-group dynamicHeight>
+  <mat-tab label="Scan">
+
+      <qr-scanner
+      [debug]="true"
+      [canvasWidth]="300"
+      [canvasHeight]="400"
+      [stopAfterScan]="false"
+      [updateTime]="900"
+      (onRead)="decodedOutput($event)">
+      </qr-scanner>
+
+  </mat-tab>
+  <mat-tab label="Inventaire">
+    <div class="example-large-box mat-elevation-z4">
+      tableau d'inventaire
+    </div>
+  </mat-tab>
+</mat-tab-group>

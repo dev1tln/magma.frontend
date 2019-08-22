@@ -9,7 +9,7 @@ import { InventaireComponent } from './components/listInventaire/inventaire.comp
 import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
-
+import { QrScannerComponent } from 'angular2-qrscanner';
 @NgModule({
   imports: [
     CommonModule,
@@ -24,7 +24,9 @@ import { HeaderInventaireComponent } from './components/headerInventaire/headerI
     HomeInventaireComponent,
     InventaireComponent,
     MenuInventaireComponent,
+    QrScannerComponent,
   ],
   providers: [],
 })
 export class InventaireModule { }
+
