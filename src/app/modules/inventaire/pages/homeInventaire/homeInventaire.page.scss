@@ -2,3 +2,22 @@ canvas {
   width: 320px !important;
   height: 480px !important;
 }
+
+.example-small-box, .example-large-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 16px;
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.example-small-box {
+  height: 330px;
+  width: 490px;
+}
+
+.example-large-box {
+  height: 250px;
+  width: 320px;
+}
