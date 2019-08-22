@@ -21,3 +21,18 @@ export const USER_INFO = gql`
     }
   }`;
 
+export const GET_UNITES = gql`{
+    user {
+      unites {
+        id
+        cdeunt
+        libunt
+        detentions {
+          id
+          lib
+        }
+      }
+    }
+  }
+`;
+

@@ -67,11 +67,7 @@ export class GraphQLModule {
     apollo.create({
       link: authLink.concat(link),
       cache: new InMemoryCache(),
-      defaultOptions: {
-        query: {
-          fetchPolicy: 'network-only'
-        }
-      }
+      resolvers: {},
     });
   }
 }

@@ -5,16 +5,22 @@ import { AUTH_USER } from 'src/app/shared/graphql/mutations';
 import { USER_INFO } from 'src/app/shared/graphql/querries';
 import { map } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { resultKeyNameFromField } from 'apollo-utilities';
 
 @Injectable()
 export class AuthService {
+  unite_id: string;
+  detention_id: string;
+
   constructor(
     private apollo: Apollo) { }
 
 
   isAuth(): boolean {
+    let result;
     const token = localStorage.getItem('token');
-    return true;
+    (token !== null) ? result = true : result = false;
+    return result;
   }
 
   login(identifiant: string, password: string) {
@@ -47,5 +53,21 @@ export class AuthService {
   logout() {
     localStorage.removeItem('token');
     this.apollo.getClient().resetStore();
+  }
+
+  getUniteId() {
+    return this.unite_id;
+  }
+
+  getDetentionId() {
+    return this.detention_id;
+  }
+
+  setUniteId(value) {
+    this.unite_id = value;
+  }
+
+  setDetentionId(value) {
+    this.detention_id = value;
   }
 }

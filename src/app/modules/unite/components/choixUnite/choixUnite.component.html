@@ -4,9 +4,8 @@
       <ng-template matStepLabel>Choix unité</ng-template>
 
       <mat-form-field>
-        <input matInput type="text" placeholder="Unité" formControlName="firstCtrl" required
-          [matAutocomplete]="autoGroup" />
-        <mat-autocomplete autoActiveFirstOption #autoGroup="matAutocomplete" [displayWith]="displayUnite">
+        <input matInput type="text" placeholder="Unité" formControlName="firstCtrl" required [matAutocomplete]="auto" />
+        <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayUnite">
           <mat-option *ngFor="let unite of uniteGroupOptions | async" [value]="unite">
             {{ unite.libunt }}
           </mat-option>
@@ -14,6 +13,27 @@
       </mat-form-field>
       <div>
         <button mat-button matStepperNext>Suivant</button>
+      </div>
+    </form>
+  </mat-step>
+
+  <mat-step [stepControl]="detentionFormGroup">
+    <form [formGroup]="detentionFormGroup" (ngSubmit)="onSubmit()">
+      <ng-template matStepLabel>Choix détention</ng-template>
+      <mat-form-field>
+        <input type="text" matInput placeholder="Detention" formControlName="secondCtrl" required
+          [matAutocomplete]="auto2" />
+        <mat-autocomplete autoActiveFirstOption #auto2="matAutocomplete" [displayWith]="displayDetention">
+          <mat-option *ngFor="let detention of detentionGroupOptions | async" [value]="detention">
+            {{ detention.lib }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <div>
+        <button mat-button matStepperPrevious>Retour</button>
+        <button mat-button matStepperNext on="onSubmit">
+          Valider
+        </button>
       </div>
     </form>
   </mat-step>

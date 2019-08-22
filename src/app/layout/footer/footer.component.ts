@@ -6,7 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  links = [{ nom: 'Inventaire', icon: 'assignment' }, { nom: 'Referenciel', icon: 'search' }];
+  links = [
+    { nom: 'Inventaires', icon: 'edit' },
+    { nom: 'Mouvements', icon: 'swap_horiz' },
+    { nom: 'Restitutions', icon: 'local_printshop' }
+  ];
   activeLink = this.links[0];
-
 }
