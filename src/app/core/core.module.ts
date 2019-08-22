@@ -1,19 +1,31 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { PageAuthComponent } from './auth/auth.page';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MaterialModule } from '../material.module';
+import { MaterialModule } from 'src/app/material.module';
+import { NavBarComponent } from './navbar/navbar.component';
+import { BrowserModule } from '@angular/platform-browser';
+import { AppRoutingModule } from 'src/app/app-routing.module';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
 
 @NgModule({
   imports: [
     CommonModule,
-    MaterialModule,
+    BrowserModule,
+    AppRoutingModule,
     FlexLayoutModule,
-    FormsModule,
-    ReactiveFormsModule,
+    MaterialModule,
   ],
-  declarations: [PageAuthComponent],
-  exports: [PageAuthComponent, MaterialModule, CommonModule]
+  declarations: [
+    HeaderComponent,
+    NavBarComponent,
+    FooterComponent,
+  ],
+  exports: [
+    HeaderComponent,
+    NavBarComponent,
+    FooterComponent,
+  ],
 })
 export class CoreModule { }

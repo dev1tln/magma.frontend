@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeInventaireComponent } from './modules/inventaire/pages/homeInventaire/homeInventaire.page';
-import { PageAuthComponent } from './core/auth/auth.page';
-import { MenuInventaireComponent } from './modules/inventaire/components/menuInventaire/menuInventaire.component';
-import { PageChoixUniteComponent } from './modules/unite/pages/choixUnite/choixUnite.page';
-import { HomeUniteComponent } from './modules/unite/pages/homeUnite/homeUnite.page';
+import { HomeInventaireComponent } from './protected/inventaire/pages/homeInventaire/homeInventaire.page';
+import { PageAuthComponent } from './public/auth/auth.page';
+import { MenuInventaireComponent } from './protected/inventaire/components/menuInventaire/menuInventaire.component';
+import { PageChoixUniteComponent } from './protected/unite/pages/choixUnite/choixUnite.page';
+import { HomeUniteComponent } from './protected/unite/pages/homeUnite/homeUnite.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },

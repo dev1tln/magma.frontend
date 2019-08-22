@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LayerModule } from './layout/layout.module';
-import { InventaireModule } from './modules/inventaire/inventaires.module';
-import { CoreModule } from './core/core.module';
-import { UniteModule } from './modules/unite/unite.module';
+import { InventaireModule } from './protected/inventaire/inventaires.module';
+import { PublicModule } from './public/public.module';
+import { UniteModule } from './protected/unite/unite.module';
 import { AuthService } from './shared/services/auth.service';
+import { CoreModule } from './core/core.module';
 
 @NgModule({
   declarations: [
@@ -22,10 +21,10 @@ import { AuthService } from './shared/services/auth.service';
     GraphQLModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    LayerModule,
+    CoreModule,
     InventaireModule,
     UniteModule,
-    CoreModule,
+    PublicModule,
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

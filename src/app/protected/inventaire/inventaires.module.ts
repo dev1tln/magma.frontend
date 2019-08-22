@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeInventaireComponent } from './pages/homeInventaire/homeInventaire.page';
-import { LayerModule } from '../../layout/layout.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../material.module';
@@ -10,6 +9,7 @@ import { MenuInventaireComponent } from './components/menuInventaire/menuInventa
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
 import { QrScannerComponent } from 'angular2-qrscanner';
+import { CoreModule } from 'src/app/core/core.module';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +17,7 @@ import { QrScannerComponent } from 'angular2-qrscanner';
     BrowserModule,
     FlexLayoutModule,
     MaterialModule,
-    LayerModule,
+    CoreModule,
   ],
   declarations: [
     HeaderInventaireComponent,

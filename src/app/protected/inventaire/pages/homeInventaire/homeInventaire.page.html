@@ -1,14 +1,9 @@
 <mat-tab-group dynamicHeight>
   <mat-tab label="Scan">
 
-      <qr-scanner
-      [debug]="true"
-      [canvasWidth]="300"
-      [canvasHeight]="400"
-      [stopAfterScan]="false"
-      [updateTime]="900"
+    <qr-scanner [debug]="true" [canvasWidth]="300" [canvasHeight]="400" [stopAfterScan]="false" [updateTime]="900"
       (onRead)="decodedOutput($event)">
-      </qr-scanner>
+    </qr-scanner>
 
   </mat-tab>
   <mat-tab label="Inventaire">
