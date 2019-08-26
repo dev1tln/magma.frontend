@@ -8,6 +8,7 @@ import { Apollo } from 'apollo-angular';
 import { GET_UNITES } from 'src/app/shared/graphql/querries';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { InventaireService } from 'src/app/shared/services/inventaires.service';
 
 @Component({
   selector: 'app-choix-unite',
@@ -32,7 +33,7 @@ export class ChoixUniteComponent implements OnInit {
   constructor(
     private apollo: Apollo,
     private router: Router,
-    private auth: AuthService,
+    private inventaire: InventaireService,
     private formBuilder: FormBuilder
   ) { }
 
@@ -40,7 +41,8 @@ export class ChoixUniteComponent implements OnInit {
     // On recupere les unites de l'user
     this.uniteGroups = this.apollo.getClient().readQuery<any>({
       query: GET_UNITES,
-    }).user.unites;
+    })
+      .user.unites;
     // Init les formulaires
     this.uniteFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -83,9 +85,7 @@ export class ChoixUniteComponent implements OnInit {
   }
 
   onSubmit() {
-    this.auth.setUniteId(this.uniteFormGroup.get('firstCtrl').value.id);
-    this.auth.setDetentionId(this.detentionFormGroup.get('secondCtrl').value.id);
-
+    this.inventaire.setInventaire(this.detentionFormGroup.get('secondCtrl').value.id);
     this.router.navigateByUrl('/inventaire');
   }
 }

@@ -1,10 +1,18 @@
+//TODO Refaire l'architecture en utilisant de vrais objets avec getter setter si projet aboutit.
+
 export interface User {
   id: string;
   dtecre: Date;
+  identifiant: string;
   nom: string;
   prenom: string;
-  type: UserType;
+  role: UserRole;
   unites: [Unite];
+}
+
+export enum UserRole {
+  UTI,
+  DET
 }
 
 export interface Unite {
@@ -49,9 +57,4 @@ export interface Detention {
   readonly lib: string;
   unite: Unite;
   inventaire: [Inventaire];
-}
-
-export enum UserType {
-  UTI,
-  DET
 }

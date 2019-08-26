@@ -69,5 +69,13 @@ export class GraphQLModule {
       cache: new InMemoryCache(),
       resolvers: {},
     });
+
+    apollo.getClient().writeData({
+      data: {
+        user: {},
+        ancientInventaire: {},
+        nouveauInventaire: {},
+      },
+    });
   }
 }
