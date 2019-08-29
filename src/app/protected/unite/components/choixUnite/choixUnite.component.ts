@@ -2,11 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Observable } from 'rxjs';
-import { map, startWith } from 'rxjs/operators';
-import { Unite } from 'src/app/shared/models/model';
+import { map, startWith, filter, first } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
-import { GET_UNITES } from 'src/app/shared/graphql/querries';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { CACHE_UNITES } from 'src/app/shared/graphql/queries';
 import { Router } from '@angular/router';
 import { InventaireService } from 'src/app/shared/services/inventaires.service';
 
@@ -40,9 +38,9 @@ export class ChoixUniteComponent implements OnInit {
   ngOnInit(): void {
     // On recupere les unites de l'user
     this.uniteGroups = this.apollo.getClient().readQuery<any>({
-      query: GET_UNITES,
+      query: CACHE_UNITES,
     })
-      .user.unites;
+      .utilisateur.unites;
     // Init les formulaires
     this.uniteFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -68,7 +66,7 @@ export class ChoixUniteComponent implements OnInit {
   private _filter(value) {
     let filterValue = value.libunt;
     if (typeof value === 'string') { filterValue = value.toLowerCase(); }
-    return this.uniteGroups.filter(option => option.libunt.toLowerCase().includes(filterValue));
+    return this.uniteGroups.filter(unite => unite.libunt.toLowerCase().includes(filterValue));
   }
 
   // methode affichage objet Unite en string
@@ -85,7 +83,11 @@ export class ChoixUniteComponent implements OnInit {
   }
 
   onSubmit() {
-    this.inventaire.setInventaire(this.detentionFormGroup.get('secondCtrl').value.id);
-    this.router.navigateByUrl('/inventaire');
+    this.inventaire.initInventaire(this.detentionFormGroup.get('secondCtrl').value.id)
+      .pipe(first()).subscribe(data => {
+        if (data !== null) {
+          this.router.navigateByUrl('/inventaire');
+        }
+      });
   }
 }

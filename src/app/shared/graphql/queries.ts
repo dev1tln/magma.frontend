@@ -16,21 +16,18 @@ export const USER_INFO = gql`
   }`;
 
 export const INVENTAIRE_INFO = gql`
-  query inventaireInfo($detention: String!){
+  query inventaireInfo($detention: ID!){
     inventaires(where: {detention: {id: $detention}}, orderBy: dtecre_ASC, last: 2){
       id, lib, dtever,
       articles{
-        article_id, nno, lib, pictureUrl, typart
+        article_id, nno, lib, typart, pictureUrl, numref
       }
     }
   }`;
-
-
-
 // Queries dans le cache
 
-export const GET_UNITES = gql`{
-    user {
+export const CACHE_UNITES = gql`{
+    utilisateur @client{
       unites {
         id
         cdeunt
@@ -41,26 +38,16 @@ export const GET_UNITES = gql`{
         }
       }
     }
+}
+`;
+
+export const CACHE_INVENTAIRE = gql`
+query getInventaires{
+  inventaires @client{
+    id, lib, dtever,
+      articles{
+      article_id, nno, pictureUrl, lib, numref
+              }
   }
-`;
-
-export const GET_NOUVEAU = gql`{
-    nouveauInventaire{
-      id, lib, dtever,
-      articles{
-        article_id, nno, pictureUrl, lib
-        }
-      }
-    }
-`;
-
-export const GET_ANCIENT = gql`{
-    ancientInventaire{
-      id, lib, dtever,
-      articles{
-        article_id, nno, pictureUrl, lib
-        }
-      }
-    }
-`;
+}`;
 

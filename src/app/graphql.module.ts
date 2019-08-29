@@ -35,7 +35,6 @@ export class GraphQLModule {
         }
         );
       }
-
       if (networkError) { console.log(`[Network error]: ${networkError}`); }
     });
 
@@ -68,14 +67,23 @@ export class GraphQLModule {
       link: authLink.concat(link),
       cache: new InMemoryCache(),
       resolvers: {},
+      defaultOptions: {
+        watchQuery: {
+          fetchPolicy: 'no-cache',
+          errorPolicy: 'ignore',
+        },
+        query: {
+          fetchPolicy: 'no-cache',
+          errorPolicy: 'all',
+        },
+      }
     });
 
     apollo.getClient().writeData({
       data: {
-        user: {},
-        ancientInventaire: {},
-        nouveauInventaire: {},
-      },
+        utilisateur: { __typename: 'User' },
+        inventaires: [],
+      }
     });
   }
 }

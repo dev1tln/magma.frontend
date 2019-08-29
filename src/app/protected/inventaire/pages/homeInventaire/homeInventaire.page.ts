@@ -10,13 +10,14 @@ import { InventaireService } from 'src/app/shared/services/inventaires.service';
   styles: []
 })
 export class HomeInventaireComponent implements OnInit {
+  exist = false;
   constructor(
     private inventaire: InventaireService,
     private router: Router,
   ) { }
 
   ngOnInit() {
-    if (this.inventaire.getAncientInventaire().length === 0) {
+    if (!this.inventaire.exist()) {
       this.router.navigateByUrl('/unite/choix');
     }
   }

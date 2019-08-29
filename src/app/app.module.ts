@@ -10,6 +10,7 @@ import { PublicModule } from './public/public.module';
 import { UniteModule } from './protected/unite/unite.module';
 import { AuthService } from './shared/services/auth.service';
 import { CoreModule } from './core/core.module';
+import { InventaireService } from './shared/services/inventaires.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,7 @@ import { CoreModule } from './core/core.module';
     UniteModule,
     PublicModule,
   ],
-  providers: [AuthService],
+  providers: [AuthService, InventaireService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

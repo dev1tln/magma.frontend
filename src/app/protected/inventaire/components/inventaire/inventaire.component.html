@@ -1,0 +1,17 @@
+<mat-accordion>
+  <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        {{nno.value[0].lib}}
+      </mat-panel-title>
+      <mat-panel-description>
+        {{nno.key}}
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <mat-list>
+      <mat-list-item *ngFor="let article of nno.value">
+        {{article.numref}}
+      </mat-list-item>
+    </mat-list>
+  </mat-expansion-panel>
+</mat-accordion>

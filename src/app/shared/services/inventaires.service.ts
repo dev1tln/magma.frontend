@@ -1,38 +1,45 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { GET_NOUVEAU, GET_ANCIENT, INVENTAIRE_INFO } from '../graphql/querries';
+import { INVENTAIRE_INFO, CACHE_INVENTAIRE } from '../graphql/queries';
 import { map } from 'rxjs/operators';
+import gql from 'graphql-tag';
 
 @Injectable()
 export class InventaireService {
+  init = false;
   constructor(private apollo: Apollo) { }
+
+  exist(): boolean {
+    return (this.init);
+  }
 
   getNouveauInventaire(): any {
     return this.apollo.getClient().readQuery<any>({
-      query: GET_NOUVEAU,
-    })
-      .nouveauInventaire;
+      query: CACHE_INVENTAIRE,
+    }).inventaires[1];
   }
 
   getAncientInventaire(): any {
     return this.apollo.getClient().readQuery<any>({
-      query: GET_ANCIENT,
-    })
-      .ancientInventaire;
+      query: CACHE_INVENTAIRE,
+    }).inventaires[0];
   }
 
   // Sauvegarde les inventaires en cours dans le caches
-  setInventaire(detention: string) {
-    this.apollo.query<any>({
+  initInventaire(pDetention: string) {
+    this.init = true;
+    return this.apollo.watchQuery<any>({
       query: INVENTAIRE_INFO,
-      variables: { detention },
-    }).pipe(map(result => {
+      variables: {
+        detention: pDetention,
+      }
+    }).valueChanges.pipe(map(result => {
       this.apollo.getClient().writeData({
         data: {
-          acientInventaire: result.data.inventaires[0],
-          nouveauInventaire: result.data.inventaires[1],
-        },
+          inventaires: result.data.inventaires,
+        }
       });
+      return result.data.inventaires;
     }));
   }
 }
