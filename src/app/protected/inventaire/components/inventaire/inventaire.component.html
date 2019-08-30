@@ -1,12 +1,17 @@
-<mat-accordion>
+<mat-toolbar color="warn" id="toolbar-inventaire">Inventaire en cours</mat-toolbar>
+<mat-accordion [multi]="true">
   <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue">
-    <mat-expansion-panel-header>
+    <mat-expansion-panel-header [ngClass]="compteManquant(nno.value)==1 ? 'inventaire-item-valide' : 'inventaire-item'">
       <mat-panel-title>
         {{nno.value[0].lib}}
       </mat-panel-title>
-      <mat-panel-description>
+      <mat-panel-description id="nno-info">
         {{nno.key}}
       </mat-panel-description>
+      <mat-icon *ngIf="compteManquant(nno.value)==1; else missBlock">check_circle_outline</mat-icon>
+      <ng-template #missBlock>
+        <div id="nombre-manquant">{{compteManquant(nno.value)}}</div>
+      </ng-template>
     </mat-expansion-panel-header>
     <mat-list>
       <mat-list-item *ngFor="let article of nno.value">

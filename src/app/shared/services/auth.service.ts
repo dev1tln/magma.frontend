@@ -38,9 +38,6 @@ export class AuthService {
         identifiant: pIdentifiant,
       }
     }).valueChanges.pipe(map(result => {
-      if (result.data === null) {
-        return throwError('Data null');
-      }
       this.apollo.getClient().writeData({
         data: { utilisateur: result.data.user }
       });

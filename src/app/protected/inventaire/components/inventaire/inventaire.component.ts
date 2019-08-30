@@ -48,6 +48,15 @@ export class InventaireComponent implements OnInit {
     return result;
   }
 
+
+  compteManquant(tab: Article[]): number {
+    let cpt = 0;
+    tab.forEach(article => {
+      if (this.manquant(article)) { cpt++; }
+    });
+    return cpt;
+  }
+
   manquant(art: Article): boolean {
     return (this.ancientInventaire.articles.includes(art) && !this.nouveauInventaire.articles.includes(art));
   }

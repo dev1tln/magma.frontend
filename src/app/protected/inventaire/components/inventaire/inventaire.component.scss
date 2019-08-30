@@ -1,0 +1,36 @@
+::ng-deep .mat-expansion-indicator::after {
+  display: none !important;
+}
+
+#toolbar-inventaire {
+  color: white;
+}
+
+#nno-info {
+  font-size: 0.8em;
+  display: flex;
+  align-items: center;
+}
+
+#nombre-manquant {
+  font-size: 1.4em;
+  margin-right: 5px;
+}
+
+.inventaire-item {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  border-color: #d6d8db;
+}
+
+.inventaire-item-valide {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  color: #155724;
+  background-color: #d4edda !important;
+  border-color: #c3e6cb;
+}
