@@ -20,7 +20,7 @@ export const INVENTAIRE_INFO = gql`
     inventaires(where: {detention: {id: $detention}}, orderBy: dtecre_ASC, last: 2){
       id, lib, dtever,
       articles{
-        article_id, nno, lib, typart, pictureUrl, numref
+        article_id, nno, lib, typart, pictureUrl, numref, numser
       }
     }
   }`;
@@ -46,8 +46,8 @@ query getInventaires{
   inventaires @client{
     id, lib, dtever,
       articles{
-      article_id, nno, pictureUrl, lib, numref
-              }
+        article_id, nno, pictureUrl, lib, numref, numser
+        }
   }
 }`;
 

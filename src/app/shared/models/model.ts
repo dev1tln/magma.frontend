@@ -38,7 +38,7 @@ export interface Inventaire {
 }
 
 export interface Article {
-  id: string;
+  article_id: string;
   createdAt: Date;
   readonly nno: string;
   readonly lib: string;
@@ -48,6 +48,7 @@ export interface Article {
   srvpou: string;
   typart: string;
   numser: string;
+  numref: string;
   pictureUrl: string;
   detention: Detention;
 }

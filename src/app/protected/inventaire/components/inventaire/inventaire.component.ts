@@ -25,8 +25,8 @@ export class InventaireComponent implements OnInit {
     }
   }
 
+  // Regroupe les articles par leur nno
   groupArticlesByNno() {
-    // group by nno
     let result = this.ancientInventaire.articles.reduce((groups, article) => {
       const nno = article.nno;
       const array = groups.get(nno) || [];
@@ -35,6 +35,7 @@ export class InventaireComponent implements OnInit {
       return groups;
     }, new Map<string, Article[]>());
 
+    // On regroupe les ancient avec les nouveaux articles
     result = this.nouveauInventaire.articles.reduce((groups, article) => {
       const nno = article.nno;
       const array = groups.get(nno) || [];
@@ -57,11 +58,19 @@ export class InventaireComponent implements OnInit {
     return cpt;
   }
 
+  compteNouveau(tab: Article[]): number {
+    let cpt = 0;
+    tab.forEach(article => {
+      if (this.nouveau(article)) { cpt++; }
+    });
+    return cpt;
+  }
+
   manquant(art: Article): boolean {
     return (this.ancientInventaire.articles.includes(art) && !this.nouveauInventaire.articles.includes(art));
   }
 
-  scanné(art: Article): boolean {
+  scanne(art: Article): boolean {
     return (this.ancientInventaire.articles.includes(art) && this.nouveauInventaire.articles.includes(art));
   }
 

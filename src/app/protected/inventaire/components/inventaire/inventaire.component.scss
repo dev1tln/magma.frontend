@@ -19,18 +19,62 @@
 
 .inventaire-item {
   position: relative;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid transparent;
+  border: 5px solid transparent;
   border-radius: 0.25rem;
-  border-color: #d6d8db;
+  border-color: #f9f9f9;
 }
 
 .inventaire-item-valide {
   position: relative;
-  padding: 0.75rem 1.25rem;
-  border: 1px solid transparent;
+  border: 5px solid transparent;
   border-radius: 0.25rem;
   color: #155724;
   background-color: #d4edda !important;
   border-color: #c3e6cb;
+}
+
+.inventaire-item-nouveau {
+  position: relative;
+  border: 5px solid transparent;
+  border-radius: 0.25rem;
+  color: #856404;
+  background-color: #fff3cd !important;
+  border-color: #ffeeba;
+}
+
+.nouveau {
+  color: #856404;
+  background-color: #fff3cd !important;
+  border-color: #ffeeba;
+}
+
+.valide {
+  color: #155724;
+  background-color: #d4edda !important;
+  border-color: #c3e6cb;
+}
+
+::ng-deep .mat-list-base .mat-list-item .mat-list-item-content {
+  padding-left: 12%;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 8%;
+}
+
+::ng-deep .mat-expansion-panel-body {
+  padding: 0 0px 0px !important;
+}
+
+.mat-list-base {
+  padding-top: 0px;
+}
+
+::ng-deep .mat-content {
+  align-items: center;
+  height: 100%;
+}
+
+#numserie {
+  font-size: 0.8em;
+  color: #c5bebe;
 }
