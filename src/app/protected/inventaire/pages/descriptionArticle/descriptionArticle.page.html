@@ -1,0 +1,28 @@
+<app-header [title]="article.lib"></app-header>
+
+<img *ngIf="article.pictureUrl !== null" src="{{article.pictureUrl}}" alt="'Photo : {{article.lib}}'" />
+
+<mat-tab-group class="detailArticle">
+  <mat-tab label="Detail">
+    <ul>
+      <li class="listeDetails">
+        <span class="detail-key">NNO</span>
+        <span class="detail-value">{{article.nno}}</span>
+      </li>
+      <li>
+        <span class="detail-key">Numéro de série</span>
+        <span class="detail-value">{{article.numser}}</span>
+      </li>
+      <li>
+        <span class="detail-key">Reference MAGMA</span>
+        <span class="detail-value">{{article.numref}}</span>
+      </li>
+      <li>
+        <span class="detail-key">Type d'article</span>
+        <span class="detail-value">{{article.typart}}</span>
+      </li>
+    </ul>
+  </mat-tab>
+  <mat-tab label="Mouvements">
+  </mat-tab>
+</mat-tab-group>

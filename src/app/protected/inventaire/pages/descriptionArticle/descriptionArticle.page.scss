@@ -1,0 +1,33 @@
+ul {
+  display: block;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  padding: 0.5em;
+  background-color: #ffffff;
+}
+
+.mat-tab-body-content {
+  display: flex;
+}
+
+ul li span {
+  width: 50%;
+}
+
+.detailArticle li {
+  display: flex;
+  padding: 0.3em 0;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.detailArticle li:last-child {
+  border-bottom: 0;
+}
+
+.detailArticle {
+  margin: 0.5em;
+}

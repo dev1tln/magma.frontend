@@ -19,7 +19,8 @@
       </ng-template>
     </mat-expansion-panel-header>
     <mat-list>
-      <mat-list-item id="test" *ngFor="let article of nno.value" [ngClass]="{
+      <mat-list-item [routerLink]="['/inventaire/article']" *ngFor="let article of nno.value"
+        (click)="onSubmit(article)" [ngClass]="{
       'valide' : scanne(article),
       'nouveau' : nouveau(article)
     }">

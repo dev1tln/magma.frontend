@@ -5,6 +5,8 @@ import { PageAuthComponent } from './public/auth/auth.page';
 import { MenuInventaireComponent } from './protected/inventaire/components/menuInventaire/menuInventaire.component';
 import { PageChoixUniteComponent } from './protected/unite/pages/choixUnite/choixUnite.page';
 import { HomeUniteComponent } from './protected/unite/pages/homeUnite/homeUnite.page';
+import { DescriptionArticleComponent } from './protected/inventaire/pages/descriptionArticle/descriptionArticle.page';
+
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -16,9 +18,11 @@ const routes: Routes = [
   },
   {
     path: 'inventaire', component: MenuInventaireComponent, children: [
-      { path: '', component: HomeInventaireComponent }
+      { path: '', component: HomeInventaireComponent },
+      { path: 'article', component: DescriptionArticleComponent }
     ]
-  },
+  }
+  ,
 
 ];
 

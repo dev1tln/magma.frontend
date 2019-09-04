@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Inventaire, Article } from 'src/app/shared/models/model';
 import { InventaireService } from 'src/app/shared/services/inventaires.service';
+import { DescriptionArticleService } from '../../pages/descriptionArticle/descriptionArticle.service';
 
 @Component({
   selector: 'app-inventaire',
@@ -14,7 +15,10 @@ export class InventaireComponent implements OnInit {
 
   affichageData: Map<string, Article[]>;
 
-  constructor(private inventaireService: InventaireService) { }
+  constructor(
+    private inventaireService: InventaireService,
+    private description_article: DescriptionArticleService
+  ) { }
 
   ngOnInit(): void {
     if (this.inventaireService.exist()) {
@@ -76,6 +80,10 @@ export class InventaireComponent implements OnInit {
 
   nouveau(art: Article): boolean {
     return (!this.ancientInventaire.articles.includes(art) && this.nouveauInventaire.articles.includes(art));
+  }
+
+  onSubmit(article: Article) {
+    this.description_article.setArticle(article);
   }
 }
 

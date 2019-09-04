@@ -46,7 +46,7 @@ query getInventaires{
   inventaires @client{
     id, lib, dtever,
       articles{
-        article_id, nno, pictureUrl, lib, numref, numser
+        article_id, nno, pictureUrl, lib, numref, numser, typart
         }
   }
 }`;

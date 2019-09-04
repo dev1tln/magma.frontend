@@ -11,6 +11,9 @@ import { HeaderInventaireComponent } from './components/headerInventaire/headerI
 import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
 import { ScannerComponent } from './components/scanner/scanner.component';
+import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
+import { DescriptionArticleService } from './pages/descriptionArticle/descriptionArticle.service';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -23,12 +26,13 @@ import { ScannerComponent } from './components/scanner/scanner.component';
   declarations: [
     HeaderInventaireComponent,
     HomeInventaireComponent,
+    DescriptionArticleComponent,
     ScannerComponent,
     InventaireComponent,
     MenuInventaireComponent,
     QrScannerComponent,
   ],
-  providers: [],
+  providers: [DescriptionArticleService],
 })
 export class InventaireModule { }
 
