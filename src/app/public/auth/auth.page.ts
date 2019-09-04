@@ -36,16 +36,11 @@ export class PageAuthComponent implements OnInit {
 
     if (this.checkoutForm.dirty && this.checkoutForm.valid) {
       this.loading = true;
-
-      this.auth.login(values.identifiant, values.password).pipe(first()).subscribe(
-        data => {
-          if (data !== null) {
-
-            this.router.navigateByUrl('/inventaire');
-          }
-          this.loading = false;
-        },
-      );
+      this.auth.login(values.identifiant, values.password)
+        .then(data => {
+          console.log("4");
+          this.router.navigateByUrl('/inventaire');
+        });
     }
   }
 }

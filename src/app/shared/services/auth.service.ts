@@ -3,8 +3,7 @@ import { Apollo } from 'apollo-angular';
 
 import { AUTH_USER } from 'src/app/shared/graphql/mutations';
 import { USER_INFO } from 'src/app/shared/graphql/queries';
-import { map } from 'rxjs/operators';
-import { throwError } from 'rxjs';
+import { map, first } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
@@ -19,30 +18,34 @@ export class AuthService {
     return result;
   }
 
-  login(pIdentifiant: string, pPassword: string) {
+  async login(pIdentifiant: string, pPassword: string) {
     // Init du token
-    this.apollo.mutate({
+    return await this.apollo.mutate({
       mutation: AUTH_USER,
       variables: {
         identifiant: pIdentifiant,
         password: pPassword,
       }
-    }).subscribe(result => {
+    }).pipe(map(async result => {
+      console.log("1");
       localStorage.setItem('token', result.data.login.access_token);
-    });
+      await this.initUser(pIdentifiant).then(() => console.log("3"));
+    })).toPromise();
+  }
 
-    // On charge les infos sur l'utilisateur
-    return this.apollo.watchQuery<any>({
+  async initUser(pIdentifiant: string): Promise<any> {
+    console.log("2");
+    return await this.apollo.query<any>({
       query: USER_INFO,
       variables: {
         identifiant: pIdentifiant,
       }
-    }).valueChanges.pipe(map(result => {
+    }).pipe(map(result => {
       this.apollo.getClient().writeData({
         data: { utilisateur: result.data.user }
       });
-      return result.data.user;
-    }));
+      console.log("2.5");
+    })).toPromise();
   }
 
   logout() {
