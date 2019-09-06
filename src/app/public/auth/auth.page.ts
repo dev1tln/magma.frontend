@@ -38,9 +38,8 @@ export class PageAuthComponent implements OnInit {
       this.loading = true;
       this.auth.login(values.identifiant, values.password)
         .then(data => {
-          console.log("4");
           this.router.navigateByUrl('/inventaire');
-        });
+        }).catch(() => this.loading = false);
     }
   }
 }

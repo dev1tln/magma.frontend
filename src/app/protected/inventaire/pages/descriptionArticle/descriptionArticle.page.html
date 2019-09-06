@@ -1,6 +1,10 @@
 <app-header [title]="article.lib"></app-header>
+<div id="containerPhoto">
 
-<img *ngIf="article.pictureUrl !== null" src="{{article.pictureUrl}}" alt="'Photo : {{article.lib}}'" />
+  <img id="phtoArticle" *ngIf="article.pictureUrl !== null" [attr.src]="article.pictureUrl | secure| async"
+    alt="'Photo : {{article.lib}}'" />
+
+</div>
 
 <mat-tab-group class="detailArticle">
   <mat-tab label="Detail">

@@ -3,12 +3,11 @@ import { Apollo } from 'apollo-angular';
 
 import { AUTH_USER } from 'src/app/shared/graphql/mutations';
 import { USER_INFO } from 'src/app/shared/graphql/queries';
-import { map, first } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
-  constructor(
-    private apollo: Apollo) { }
+  constructor(private apollo: Apollo) { }
 
 
   isAuth(): boolean {
@@ -18,6 +17,11 @@ export class AuthService {
     return result;
   }
 
+  /**
+   * Méthode pour s'autentifiier et qui initialise le cache + JWT Token.
+   * @param pIdentifiant identifiant de l'utilisateur
+   * @param pPassword mot de passe de l'utilisateur
+   */
   async login(pIdentifiant: string, pPassword: string) {
     // Init du token
     return await this.apollo.mutate({
@@ -27,14 +31,16 @@ export class AuthService {
         password: pPassword,
       }
     }).pipe(map(async result => {
-      console.log("1");
       localStorage.setItem('token', result.data.login.access_token);
-      await this.initUser(pIdentifiant).then(() => console.log("3"));
+      await this.initUser(pIdentifiant);
     })).toPromise();
   }
 
+  /**
+   * Initialise l'utilisateur dans le cache.
+   * @param pIdentifiant identifiant de l'user
+   */
   async initUser(pIdentifiant: string): Promise<any> {
-    console.log("2");
     return await this.apollo.query<any>({
       query: USER_INFO,
       variables: {
@@ -44,7 +50,6 @@ export class AuthService {
       this.apollo.getClient().writeData({
         data: { utilisateur: result.data.user }
       });
-      console.log("2.5");
     })).toPromise();
   }
 

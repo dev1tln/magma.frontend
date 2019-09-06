@@ -13,12 +13,15 @@ import { CoreModule } from 'src/app/core/core.module';
 import { ScannerComponent } from './components/scanner/scanner.component';
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
 import { DescriptionArticleService } from './pages/descriptionArticle/descriptionArticle.service';
+import { PipeModule } from 'src/app/shared/pipes/pipe.module';
+import { SecurePipe } from '../../shared/pipes/secure.pipe';
 
 @NgModule({
   imports: [
     CommonModule,
     AppRoutingModule,
     BrowserModule,
+    PipeModule,
     FlexLayoutModule,
     MaterialModule,
     CoreModule,

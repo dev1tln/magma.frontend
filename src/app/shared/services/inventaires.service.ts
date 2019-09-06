@@ -2,15 +2,18 @@ import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { INVENTAIRE_INFO, CACHE_INVENTAIRE } from '../graphql/queries';
 import { map } from 'rxjs/operators';
-import gql from 'graphql-tag';
+import { Article } from '../models/model';
 
 @Injectable()
 export class InventaireService {
-  init = false;
+  private init = false;
   constructor(private apollo: Apollo) { }
 
+  /**
+   * Controle interne dans le but de savoir si un inventaire est chargé dans le cache.
+   */
   exist(): boolean {
-    return (this.init);
+    return this.init;
   }
 
   getNouveauInventaire(): any {
@@ -41,5 +44,8 @@ export class InventaireService {
       });
       return result.data.inventaires;
     }));
+  }
+
+  ajouterArticle(article: Article) {
   }
 }
