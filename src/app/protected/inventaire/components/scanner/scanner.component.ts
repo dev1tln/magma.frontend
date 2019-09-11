@@ -1,7 +1,8 @@
-import { Component, ViewChild, ViewEncapsulation, OnInit } from '@angular/core';
+import { Component, ViewChild, ViewEncapsulation, OnInit, Inject } from '@angular/core';
 import { QrScannerComponent } from 'angular2-qrscanner';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
+import { Article } from 'src/app/shared/models/model';
 
 @Component({
   selector: 'app-scanner',
@@ -10,10 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./scanner.component.scss'],
   styles: []
 })
-export class ScannerComponent implements OnInit {
+export class ScannerComponent  implements OnInit {
 
   @ViewChild(QrScannerComponent, { static: true }) qrScannerComponent: QrScannerComponent;
-  qr = '';
+  private art: Article = null;
+  res: string;
 
   constructor(
     private auth: AuthService,
@@ -47,10 +49,19 @@ export class ScannerComponent implements OnInit {
 
     this.qrScannerComponent.capturedQr.subscribe(result => {
       //console.log(result);
-
-      this.qr = result;
-      alert(this.qr);
+      this.art.numref=result;
     });
   }
-
+  qrDecoup(): string {
+    if (this.art !== null) {
+      var splits = this.art.numref.split("|"); 
+      this.art.numref = splits[0];
+      this.res = this.art.numref;
+    }
+    else {
+      this.res = '';
+    }
+    return this.res;
 }
+}
+
