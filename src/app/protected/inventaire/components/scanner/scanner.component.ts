@@ -11,10 +11,9 @@ import { Article } from 'src/app/shared/models/model';
   styleUrls: ['./scanner.component.scss'],
   styles: []
 })
-export class ScannerComponent  implements OnInit {
+export class ScannerComponent implements OnInit {
 
   @ViewChild(QrScannerComponent, { static: true }) qrScannerComponent: QrScannerComponent;
-  private art: Article = null;
   res: string;
 
   constructor(
@@ -48,20 +47,19 @@ export class ScannerComponent  implements OnInit {
     });
 
     this.qrScannerComponent.capturedQr.subscribe(result => {
-      //console.log(result);
-      this.art.numref=result;
+      alert(result);
     });
   }
-  qrDecoup(): string {
-    if (this.art !== null) {
-      var splits = this.art.numref.split("|"); 
-      this.art.numref = splits[0];
-      this.res = this.art.numref;
-    }
-    else {
-      this.res = '';
-    }
-    return this.res;
-}
+  // qrDecoup(): string {
+  //   if (this.art !== null) {
+  //     var splits = this.art.numref.split("|");
+  //     this.art.numref = splits[0];
+  //     this.res = this.art.numref;
+  //   }
+  //   else {
+  //     this.res = '';
+  //   }
+  //   return this.res;
+  // }
 }
 

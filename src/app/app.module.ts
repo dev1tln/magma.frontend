@@ -14,10 +14,12 @@ import { InventaireService } from './shared/services/inventaires.service';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { PipeModule } from './shared/pipes/pipe.module';
 import { DescriptionArticleService } from './shared/services/descriptionArticle.service';
+import { PopupInfosComponent } from './popup-infos/popup-infos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    PopupInfosComponent,
   ],
   imports: [
     BrowserModule,

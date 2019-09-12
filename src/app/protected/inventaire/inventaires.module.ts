@@ -15,6 +15,7 @@ import { DescriptionArticleComponent } from './pages/descriptionArticle/descript
 import { DescriptionArticleService } from '../../shared/services/descriptionArticle.service';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { SecurePipe } from '../../shared/pipes/secure.pipe';
+import { PopupInfosComponent } from './components/scanner/popup-infos/popup-infos.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { SecurePipe } from '../../shared/pipes/secure.pipe';
     InventaireComponent,
     MenuInventaireComponent,
     QrScannerComponent,
+    PopupInfosComponent,
   ],
   providers: [],
 })

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  graphqlUrl: 'magmaback.localtunnel.me',
+  graphqlUrl: 'localhost:3000',
 };
 
 
