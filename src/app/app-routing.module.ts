@@ -6,6 +6,8 @@ import { MenuInventaireComponent } from './protected/inventaire/components/menuI
 import { PageChoixUniteComponent } from './protected/unite/pages/choixUnite/choixUnite.page';
 import { HomeUniteComponent } from './protected/unite/pages/homeUnite/homeUnite.page';
 import { DescriptionArticleComponent } from './protected/inventaire/pages/descriptionArticle/descriptionArticle.page';
+import { ScannerComponent } from './protected/inventaire/components/scanner/scanner.component';
+
 
 
 const routes: Routes = [
@@ -20,6 +22,12 @@ const routes: Routes = [
     path: 'inventaire', component: MenuInventaireComponent, children: [
       { path: '', component: HomeInventaireComponent },
       { path: 'article', component: DescriptionArticleComponent }
+    ]
+  },
+  {
+    path: 'inventaire', component: MenuInventaireComponent, children: [
+      { path: '', component: HomeInventaireComponent },
+      { path: 'scanner', component: ScannerComponent }
     ]
   }
   ,
