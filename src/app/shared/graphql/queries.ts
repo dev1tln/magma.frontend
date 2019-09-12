@@ -15,19 +15,28 @@ export const USER_INFO = gql`
     }
   }`;
 
-export const INVENTAIRE_INFO = gql`
-  query inventaireInfo($detention: ID!){
-    inventaires(where: {detention: {id: $detention}}, orderBy: dtecre_ASC, last: 2){
+export const INVENTAIRE_NOUVEAU = gql`
+  query inventaireNouveau($detention: ID!){
+    inventaires(where: {detention: {id: $detention}}, orderBy: dtecre_ASC, last: 1){
       id, lib, dtever,
       articles{
         article_id, nno, lib, typart, pictureUrl, numref, numser
       }
     }
   }`;
-// Queries dans le cache
+
+export const INVENTAIRE_ANCIENT = gql`
+  query inventaireAncient($detention: ID!){
+    inventaires(where: {detention: {id: $detention}}, orderBy: dtever_ASC, last: 1){
+      id, lib, dtever,
+      articles{
+        article_id, nno, lib, typart, pictureUrl, numref, numser
+      }
+    }
+  }`;
 
 export const CACHE_UNITES = gql`{
-    utilisateur @client{
+    user{
       unites {
         id
         cdeunt
@@ -43,7 +52,7 @@ export const CACHE_UNITES = gql`{
 
 export const CACHE_INVENTAIRE = gql`
 query getInventaires{
-  inventaires @client{
+  inventaires{
     id, lib, dtever,
       articles{
         article_id, nno, pictureUrl, lib, numref, numser, typart

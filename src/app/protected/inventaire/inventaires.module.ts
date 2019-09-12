@@ -12,7 +12,7 @@ import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
 import { ScannerComponent } from './components/scanner/scanner.component';
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
-import { DescriptionArticleService } from './pages/descriptionArticle/descriptionArticle.service';
+import { DescriptionArticleService } from '../../shared/services/descriptionArticle.service';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { SecurePipe } from '../../shared/pipes/secure.pipe';
 
@@ -35,7 +35,7 @@ import { SecurePipe } from '../../shared/pipes/secure.pipe';
     MenuInventaireComponent,
     QrScannerComponent,
   ],
-  providers: [DescriptionArticleService],
+  providers: [],
 })
 export class InventaireModule { }
 

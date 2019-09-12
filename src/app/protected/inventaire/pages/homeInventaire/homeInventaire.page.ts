@@ -9,16 +9,4 @@ import { InventaireService } from 'src/app/shared/services/inventaires.service';
   styleUrls: ['./homeInventaire.page.scss'],
   styles: []
 })
-export class HomeInventaireComponent implements OnInit {
-  exist = false;
-  constructor(
-    private inventaire: InventaireService,
-    private router: Router,
-  ) { }
-
-  ngOnInit() {
-    if (!this.inventaire.exist()) {
-      this.router.navigateByUrl('/unite/choix');
-    }
-  }
-}
+export class HomeInventaireComponent { }

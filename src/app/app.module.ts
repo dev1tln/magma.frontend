@@ -13,6 +13,7 @@ import { CoreModule } from './core/core.module';
 import { InventaireService } from './shared/services/inventaires.service';
 import { JwtInterceptor } from './shared/interceptors/jwt.interceptor';
 import { PipeModule } from './shared/pipes/pipe.module';
+import { DescriptionArticleService } from './shared/services/descriptionArticle.service';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { PipeModule } from './shared/pipes/pipe.module';
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
     AuthService,
     InventaireService,
+    DescriptionArticleService,
   ],
   bootstrap: [AppComponent]
 })

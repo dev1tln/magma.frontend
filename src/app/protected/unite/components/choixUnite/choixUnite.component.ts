@@ -4,9 +4,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map, startWith, filter, first } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
-import { CACHE_UNITES } from 'src/app/shared/graphql/queries';
+import { CACHE_UNITES, USER_INFO } from 'src/app/shared/graphql/queries';
 import { Router } from '@angular/router';
 import { InventaireService } from 'src/app/shared/services/inventaires.service';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-choix-unite',
@@ -29,18 +30,31 @@ export class ChoixUniteComponent implements OnInit {
   detentionGroupOptions: Observable<any[]>;
 
   constructor(
-    private apollo: Apollo,
     private router: Router,
-    private inventaire: InventaireService,
+    private apollo: Apollo,
+    private authService: AuthService,
+    private inventaireService: InventaireService,
     private formBuilder: FormBuilder
   ) { }
 
   ngOnInit(): void {
-    // On recupere les unites de l'user
-    this.uniteGroups = this.apollo.getClient().readQuery<any>({
-      query: CACHE_UNITES,
-    })
-      .utilisateur.unites;
+    if (!this.authService.isAuth()) { this.router.navigateByUrl('/auth'); }
+
+    this.apollo.query<any>({
+      query: USER_INFO,
+      variables: {
+        identifiant: this.authService.getUser(),
+      },
+    }).subscribe(result => {
+      // On recupere les unites de l'user
+      this.uniteGroups = result.data.user.unites;
+      this.uniteGroupOptions = this.uniteFormGroup.get('firstCtrl')
+        .valueChanges.pipe(
+          startWith(''),
+          map(value => this._filter(value))
+        );
+    });
+
     // Init les formulaires
     this.uniteFormGroup = this.formBuilder.group({
       firstCtrl: ['', Validators.required]
@@ -48,13 +62,6 @@ export class ChoixUniteComponent implements OnInit {
     this.detentionFormGroup = this.formBuilder.group({
       secondCtrl: ['', Validators.required]
     });
-
-    // Souscription du form à l'autocomplete
-    this.uniteGroupOptions = this.uniteFormGroup.get('firstCtrl')
-      .valueChanges.pipe(
-        startWith(''),
-        map(value => this._filter(value))
-      );
 
     this.detentionGroupOptions = this.uniteFormGroup.get('firstCtrl')
       .valueChanges.pipe(
@@ -83,11 +90,7 @@ export class ChoixUniteComponent implements OnInit {
   }
 
   onSubmit() {
-    this.inventaire.initInventaire(this.detentionFormGroup.get('secondCtrl').value.id)
-      .pipe(first()).subscribe(data => {
-        if (data !== null) {
-          this.router.navigateByUrl('/inventaire');
-        }
-      });
+    this.inventaireService.setDetention(this.detentionFormGroup.get('secondCtrl').value.id);
+    this.router.navigateByUrl('/inventaire');
   }
 }

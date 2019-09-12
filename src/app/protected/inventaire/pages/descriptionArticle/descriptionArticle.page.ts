@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Article } from 'src/app/shared/models/model';
-import { DescriptionArticleService } from './descriptionArticle.service';
+import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
 
 
 @Component({

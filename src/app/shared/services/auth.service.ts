@@ -7,14 +7,14 @@ import { map } from 'rxjs/operators';
 
 @Injectable()
 export class AuthService {
+  private identifiant: string = null;
+
   constructor(private apollo: Apollo) { }
 
-
   isAuth(): boolean {
-    let result;
     const token = localStorage.getItem('token');
-    (token !== null) ? result = true : result = false;
-    return result;
+    if (token === null || this.identifiant === null) { return false; }
+    return true;
   }
 
   /**
@@ -31,30 +31,21 @@ export class AuthService {
         password: pPassword,
       }
     }).pipe(map(async result => {
+      this.identifiant = pIdentifiant;
       localStorage.setItem('token', result.data.login.access_token);
-      await this.initUser(pIdentifiant);
     })).toPromise();
   }
 
   /**
-   * Initialise l'utilisateur dans le cache.
-   * @param pIdentifiant identifiant de l'user
+   * GET infos de l'utilisateur connecté.
    */
-  async initUser(pIdentifiant: string): Promise<any> {
-    return await this.apollo.query<any>({
-      query: USER_INFO,
-      variables: {
-        identifiant: pIdentifiant,
-      }
-    }).pipe(map(result => {
-      this.apollo.getClient().writeData({
-        data: { utilisateur: result.data.user }
-      });
-    })).toPromise();
+  getUser() {
+    return this.identifiant;
   }
 
   logout() {
     localStorage.removeItem('token');
+    this.identifiant = null;
     this.apollo.getClient().resetStore();
   }
 }

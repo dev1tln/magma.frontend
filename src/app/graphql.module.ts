@@ -69,20 +69,11 @@ export class GraphQLModule {
       resolvers: {},
       defaultOptions: {
         watchQuery: {
-          fetchPolicy: 'no-cache',
           errorPolicy: 'ignore',
         },
         query: {
-          fetchPolicy: 'no-cache',
           errorPolicy: 'all',
         },
-      }
-    });
-
-    apollo.getClient().writeData({
-      data: {
-        utilisateur: { __typename: 'User' },
-        inventaires: [],
       }
     });
   }

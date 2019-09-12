@@ -1,51 +1,71 @@
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
-import { INVENTAIRE_INFO, CACHE_INVENTAIRE } from '../graphql/queries';
-import { map } from 'rxjs/operators';
-import { Article } from '../models/model';
+import { Article, Inventaire } from '../models/model';
+import { AJOUTER_ARTICLE } from '../graphql/mutations';
+import { INVENTAIRE_NOUVEAU } from '../graphql/queries';
 
 @Injectable()
 export class InventaireService {
-  private init = false;
+  private detentionId: string = null;
+
+  ancientInventaire: Inventaire;
+  nouveauInventaire: Inventaire;
+
   constructor(private apollo: Apollo) { }
 
-  /**
-   * Controle interne dans le but de savoir si un inventaire est chargé dans le cache.
-   */
-  exist(): boolean {
-    return this.init;
+  setDetention(id: string) {
+    this.detentionId = id;
   }
 
-  getNouveauInventaire(): any {
-    return this.apollo.getClient().readQuery<any>({
-      query: CACHE_INVENTAIRE,
-    }).inventaires[1];
+  getDetention(): string {
+    return this.detentionId;
   }
 
-  getAncientInventaire(): any {
-    return this.apollo.getClient().readQuery<any>({
-      query: CACHE_INVENTAIRE,
-    }).inventaires[0];
-  }
+  // Ajoute un article en inventaire
+  ajouterArticleScanne(article: Article) {
+    if (!this.controlesInventaire(article)) {
+      throw Error('Article déjà présent');
+    }
 
-  // Sauvegarde les inventaires en cours dans le caches
-  initInventaire(pDetention: string) {
-    this.init = true;
-    return this.apollo.watchQuery<any>({
-      query: INVENTAIRE_INFO,
+    this.apollo.mutate({
+      mutation: AJOUTER_ARTICLE,
       variables: {
-        detention: pDetention,
-      }
-    }).valueChanges.pipe(map(result => {
-      this.apollo.getClient().writeData({
-        data: {
-          inventaires: result.data.inventaires,
+        articleId: article.article_id,
+        inventaireId: this.nouveauInventaire.id
+      },
+      optimisticResponse: {
+        __typename: 'Mutation',
+        ajouterArticle: {
+          __typename: 'Article',
+          article_id: article.article_id,
+          lib: article.lib,
+          numref: article.numref,
+          numser: article.numser,
+          pictureUrl: article.pictureUrl,
         }
-      });
-      return result.data.inventaires;
-    }));
+      },
+      update: (proxy, { data: { ajouterArticle } }) => {
+        // Read the data from our cache for this query.
+        const data: any = proxy.readQuery({ query: INVENTAIRE_NOUVEAU });
+        // Write our data back to the cache with the new comment in it
+        proxy.writeQuery({
+          query: INVENTAIRE_NOUVEAU, data: {
+            ...data,
+            articles: [...data.articles, ajouterArticle]
+          }
+        });
+      }
+    });
   }
 
-  ajouterArticle(article: Article) {
+  // Different Controle à faire
+  controlesInventaire(article: Article): boolean {
+    // Test contient l'article
+    if (this.nouveauInventaire.articles.filter(item => item.article_id === article.article_id).length > 0) {
+      return false;
+    }
+    return true;
   }
+
+
 }

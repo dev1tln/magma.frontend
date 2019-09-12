@@ -15,6 +15,6 @@ export class HeaderComponent implements OnInit {
 
   retourPagePrecedente() {
     this.location.back();
-    console.log()
+    console.log();
   }
 }
