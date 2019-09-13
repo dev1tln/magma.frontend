@@ -12,10 +12,11 @@ import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
 import { ScannerComponent } from './components/scanner/scanner.component';
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
-import { DescriptionArticleService } from '../../shared/services/descriptionArticle.service';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
-import { SecurePipe } from '../../shared/pipes/secure.pipe';
 import { PopupInfosComponent } from './components/scanner/popup-infos/popup-infos.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
+
+
 
 @NgModule({
   imports: [
@@ -26,6 +27,7 @@ import { PopupInfosComponent } from './components/scanner/popup-infos/popup-info
     FlexLayoutModule,
     MaterialModule,
     CoreModule,
+    ZXingScannerModule,
   ],
   declarations: [
     HeaderInventaireComponent,
