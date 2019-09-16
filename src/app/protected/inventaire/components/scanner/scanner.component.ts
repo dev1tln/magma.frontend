@@ -13,6 +13,7 @@ export class ScannerComponent {
 
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent;
+  qrCode: string='';
 
   constructor(
     private auth: AuthService,
@@ -21,6 +22,31 @@ export class ScannerComponent {
 
   scan(event) {
     alert(event);
+    this.qrCode = event;
+  }
+
+  getQrCode(): string {
+    return this.qrCode;
+  }
+
+  getQrDecoup(): any {
+    if (this.qrCode.includes('|')) {
+      var splits = this.qrCode.split("|"); 
+      return {
+        article_id: splits[0],
+        nno: splits[1],
+        lib: splits[2],
+        numref: splits[3],
+       } ;
+    }
+    else {
+      return {
+        article_id: null,
+        nno: null,
+        lib: null,
+        numref: null,
+       } ;
+    }
   }
 }
 

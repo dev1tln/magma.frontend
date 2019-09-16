@@ -22,7 +22,7 @@ export class InventaireService {
   }
 
   // Ajoute un article en inventaire
-  ajouterArticleScanne(article: Article) {
+  ajouterArticleScanne(article: any) {
     if (!this.controlesInventaire(article)) {
       throw Error('Article déjà présent');
     }
