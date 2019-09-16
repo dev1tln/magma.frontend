@@ -1,4 +1,8 @@
-<mat-toolbar color="warn" id="toolbar-inventaire">Inventaire en cours<button mat-button [routerLink]="['/inventaire/scanner']">scan</button></mat-toolbar>
+<mat-toolbar color="warn" id="toolbar-inventaire">Inventaire en cours
+    <button mat-fab id="goToScanner" [routerLink]="['/inventaire/scanner']">
+      <img id='iconeQrcode' src='../../../assets/img/QRCODE.png' alt='qrcode' />
+  </button>
+</mat-toolbar>
 <mat-accordion [multi]="true">
   <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue">
     <mat-expansion-panel-header [ngClass]="{
@@ -30,3 +34,4 @@
     </mat-list>
   </mat-expansion-panel>
 </mat-accordion>
+
