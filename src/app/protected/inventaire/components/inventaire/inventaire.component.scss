@@ -83,13 +83,14 @@
   width: 49%;
 }
 
-#iconeQrcode{
+#iconeQrcode {
   height: 2rem;
   margin-top: -4px;
 }
 
-#goToScanner{
+#goToScanner {
   position: fixed;
+  z-index: 2;
   bottom: 10%;
   right: 4%;
 }

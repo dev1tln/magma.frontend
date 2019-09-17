@@ -15,7 +15,7 @@ export class ScannerComponent {
 
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent;
-  qrCode: string = '';
+  qrCode = '';
 
   constructor(
     private _bottomSheet: MatBottomSheet,
