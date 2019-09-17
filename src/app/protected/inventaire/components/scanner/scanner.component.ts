@@ -3,6 +3,7 @@ import { ZXingScannerComponent } from '@zxing/ngx-scanner';
 import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
 import { Location } from '@angular/common';
 import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
+import { InventaireService } from 'src/app/shared/services/inventaires.service';
 
 @Component({
   selector: 'app-scanner',
@@ -14,13 +15,13 @@ export class ScannerComponent {
 
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent;
-  qrCode: string='';
+  qrCode: string = '';
 
   constructor(
     private _bottomSheet: MatBottomSheet,
     private location: Location,
     private descriptionArticle: DescriptionArticleService,
-
+    private inventaireService: InventaireService,
   ) { }
 
   retourPagePrecedente() {
@@ -38,6 +39,8 @@ export class ScannerComponent {
   scan(event) {
     alert(event);
     this.qrCode = event;
+    this.inventaireService.ajouterArticleScanne(this.getQrDecoup());
+    this.openBottomSheet();
   }
 
   getQrCode(): string {
@@ -46,13 +49,13 @@ export class ScannerComponent {
 
   getQrDecoup(): any {
     if (this.qrCode.includes('|')) {
-      var splits = this.qrCode.split("|"); 
+      var splits = this.qrCode.split("|");
       return {
         article_id: splits[0],
         nno: splits[1],
         lib: splits[2],
         numref: splits[3],
-       } ;
+      };
     }
     else {
       return {
@@ -60,7 +63,7 @@ export class ScannerComponent {
         nno: null,
         lib: null,
         numref: null,
-       } ;
+      };
     }
   }
 }
