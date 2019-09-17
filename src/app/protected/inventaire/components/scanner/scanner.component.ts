@@ -15,7 +15,7 @@ export class ScannerComponent {
 
   @ViewChild('scanner', { static: false })
   scanner: ZXingScannerComponent;
-  qrCode: string = '';
+  qrCode = '';
 
   constructor(
     private _bottomSheet: MatBottomSheet,
@@ -30,14 +30,11 @@ export class ScannerComponent {
   }
 
   openBottomSheet(): void {
-    this.descriptionArticle.setArticle({
-      article_id:"10350451",lib:"Armoire",numser:"1245", nno: "Bla613553", numref: "ARM1", 
-    });
+    this.descriptionArticle.setArticle(this.getQrDecoup());
     this._bottomSheet.open(PopupInfosComponent);
   }
 
   scan(event) {
-    alert(event);
     this.qrCode = event;
     this.inventaireService.ajouterArticleScanne(this.getQrDecoup());
     this.openBottomSheet();
@@ -74,16 +71,16 @@ export class ScannerComponent {
   templateUrl: './popup-infos/popup-infos.component.html',
 })
 export class PopupInfosComponent implements OnInit {
- 
+
   article: any;
 
   constructor(
     private descriptionArticle: DescriptionArticleService,
-    private _bottomSheetRef: MatBottomSheetRef<PopupInfosComponent>) {}
+    private _bottomSheetRef: MatBottomSheetRef<PopupInfosComponent>) { }
 
-    ngOnInit(): void {
-      this.article= this.descriptionArticle.getArticle();
-    }
+  ngOnInit(): void {
+    this.article = this.descriptionArticle.getArticle();
+  }
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();

@@ -1,28 +1,17 @@
-canvas {
-  width: 320px !important;
-  height: 480px !important;
+:host zxing-scanner::ng-deep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.example-small-box, .example-large-box {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
+::ng-deep video {
+  height: 85vh !important;
+  width: 100% !important;
 }
 
-.example-small-box {
-  height: 330px;
-  width: 490px;
-}
-
-.example-large-box {
-  height: 250px;
-  width: 320px;
-}
-
-#retourArrow{
+#retourArrow {
+  z-index: 2;
   margin-top: 9%;
   margin-left: 2%;
 }
