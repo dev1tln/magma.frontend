@@ -1,7 +1,8 @@
 import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
-import { AuthService } from 'src/app/shared/services/auth.service';
-import { Router } from '@angular/router';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
+import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { Location } from '@angular/common';
+import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
 
 @Component({
   selector: 'app-scanner',
@@ -16,9 +17,23 @@ export class ScannerComponent {
   qrCode: string='';
 
   constructor(
-    private auth: AuthService,
-    private router: Router,
+    private _bottomSheet: MatBottomSheet,
+    private location: Location,
+    private descriptionArticle: DescriptionArticleService,
+
   ) { }
+
+  retourPagePrecedente() {
+    this.location.back();
+    console.log();
+  }
+
+  openBottomSheet(): void {
+    this.descriptionArticle.setArticle({
+      article_id:"10350451", nno: "Bla613553", numref: "ARM1", 
+    });
+    this._bottomSheet.open(PopupInfosComponent);
+  }
 
   scan(event) {
     alert(event);
@@ -49,4 +64,30 @@ export class ScannerComponent {
     }
   }
 }
+
+
+@Component({
+  selector: 'app-popup-infos',
+  templateUrl: './popup-infos/popup-infos.component.html',
+})
+export class PopupInfosComponent implements OnInit {
+ 
+  article: any;
+
+  constructor(
+    private descriptionArticle: DescriptionArticleService,
+    private _bottomSheetRef: MatBottomSheetRef<PopupInfosComponent>) {}
+
+    ngOnInit(): void {
+      this.article= this.descriptionArticle.getArticle();
+    }
+
+  openLink(event: MouseEvent): void {
+    this._bottomSheetRef.dismiss();
+    event.preventDefault();
+  }
+}
+
+
+
 

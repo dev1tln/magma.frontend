@@ -1,7 +1,8 @@
+<button mat-mini-fab id="retourArrow" (click)="retourPagePrecedente()">
+    <mat-icon>
+      arrow_back_outlined
+    </mat-icon>
+  </button>
 <zxing-scanner #scanner (scanSuccess)=scan($event)>
 </zxing-scanner>
-
-    <li>{{getQrDecoup()?.article_id}}</li>
-    <li>{{getQrDecoup()?.nno}}</li>
-    <li>{{getQrDecoup()?.lib}}</li>
-    <li>{{getQrDecoup()?.numref}}</li>
+    <button (click)="openBottomSheet()">test</button>
