@@ -15,8 +15,7 @@ export const AJOUTER_ARTICLE = gql`
         article_id,
         lib,
         numref,
-        numser,
-        pictureUrl,
+        nno
         }
     }`;
 
