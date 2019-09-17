@@ -31,7 +31,7 @@ export class ScannerComponent {
 
   openBottomSheet(): void {
     this.descriptionArticle.setArticle({
-      article_id:"10350451", nno: "Bla613553", numref: "ARM1", 
+      article_id:"10350451",lib:"Armoire",numser:"1245", nno: "Bla613553", numref: "ARM1", 
     });
     this._bottomSheet.open(PopupInfosComponent);
   }
