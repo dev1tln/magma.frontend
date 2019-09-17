@@ -14,6 +14,7 @@ import { ScannerComponent, PopupInfosComponent } from './components/scanner/scan
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
 
 
 
@@ -37,12 +38,13 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MenuInventaireComponent,
     QrScannerComponent,
     PopupInfosComponent,
-    
+    ScannerPageComponent
+
 
   ],
   entryComponents: [
     PopupInfosComponent
-],
+  ],
   providers: [],
 })
 export class InventaireModule { }
