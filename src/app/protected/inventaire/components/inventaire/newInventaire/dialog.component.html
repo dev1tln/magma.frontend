@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Aucun inventaire en cours</h1>
+<div mat-dialog-content>
+  <p>Voulez-vous commencer un nouvel inventaire ?</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Non Merci</button>
+  <button mat-button cdkFocusInitial (click)="newInventaire()">Ok</button>
+</div>

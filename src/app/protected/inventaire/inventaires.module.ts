@@ -4,7 +4,7 @@ import { HomeInventaireComponent } from './pages/homeInventaire/homeInventaire.p
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../material.module';
-import { InventaireComponent } from './components/inventaire/inventaire.component';
+import { InventaireComponent, DialogInventaireComponent } from './components/inventaire/inventaire.component';
 import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
@@ -38,12 +38,11 @@ import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
     MenuInventaireComponent,
     QrScannerComponent,
     PopupInfosComponent,
-    ScannerPageComponent
-
-
+    ScannerPageComponent,
+    DialogInventaireComponent
   ],
   entryComponents: [
-    PopupInfosComponent
+    PopupInfosComponent, DialogInventaireComponent
   ],
   providers: [],
 })

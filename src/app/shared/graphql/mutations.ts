@@ -10,8 +10,8 @@ export const AUTH_USER = gql`
   }`;
 
 export const AJOUTER_ARTICLE = gql`
-  mutation ajouterArticle($articleId: ID!, $inventaireID: ID!){
-    ajouterArticle(data: {articleId: $articleId, inventaireId:$inventaireID}) {
+  mutation ajouterArticle($article: ID!, $detention: ID!){
+    ajouterArticle(data: {article: $article, detention:$detention}) {
         article_id,
         lib,
         numref,
@@ -19,5 +19,12 @@ export const AJOUTER_ARTICLE = gql`
         }
     }`;
 
-
-
+export const CREATE_INVENTAIRE = gql`
+  mutation createInventaire($detention: ID!){
+    createInventaire(data: { detention : { connect: {id : $detention }}}) {
+      id, dtever, dtecre,
+      articles{
+        article_id, nno, lib, typart, pictureUrl, numref, numser
+      }
+    }
+  }`;

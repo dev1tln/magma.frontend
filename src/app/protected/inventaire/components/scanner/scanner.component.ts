@@ -35,8 +35,8 @@ export class ScannerComponent {
   }
 
   scan(event) {
-    this.qrCode = event;
-    if (this.descriptionArticle.getArticle() !== this.getQrDecoup()) {
+    if (this.qrCode !== event) {
+      this.qrCode = event;
       this.inventaireService.ajouterArticleScanne(this.getQrDecoup());
       this.openBottomSheet();
     }
