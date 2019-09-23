@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { Inventaire, Article } from 'src/app/shared/models/model';
@@ -84,6 +85,7 @@ export class InventaireComponent implements OnInit {
 
 
   // Méthodes pour l'affichage
+  
   compteManquant(tab: Article[]): number {
     let cpt = 0;
     tab.forEach(article => {
