@@ -78,3 +78,19 @@
   font-size: 0.8em;
   color: #c5bebe;
 }
+
+.mat-expansion-panel-header-title {
+  width: 49%;
+}
+
+#iconeQrcode {
+  height: 2rem;
+  margin-top: -4px;
+}
+
+#goToScanner {
+  position: fixed;
+  z-index: 2;
+  bottom: 10%;
+  right: 4%;
+}

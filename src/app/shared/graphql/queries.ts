@@ -18,7 +18,7 @@ export const USER_INFO = gql`
 export const INVENTAIRE_NOUVEAU = gql`
   query inventaireNouveau($detention: ID!){
     inventaires(where: {detention: {id: $detention}}, orderBy: dtecre_ASC, last: 1){
-      id, lib, dtever,
+      id, dtecre, dtever,
       articles{
         article_id, nno, lib, typart, pictureUrl, numref, numser
       }
@@ -28,7 +28,7 @@ export const INVENTAIRE_NOUVEAU = gql`
 export const INVENTAIRE_ANCIENT = gql`
   query inventaireAncient($detention: ID!){
     inventaires(where: {detention: {id: $detention}}, orderBy: dtever_ASC, last: 1){
-      id, lib, dtever,
+      id, dtecre, dtever,
       articles{
         article_id, nno, lib, typart, pictureUrl, numref, numser
       }

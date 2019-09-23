@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { Router } from '@angular/router';
 import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
+import { MatDialog, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'app-inventaire',
@@ -19,6 +20,7 @@ export class InventaireComponent implements OnInit {
   constructor(
     private apollo: Apollo,
     private router: Router,
+    public dialog: MatDialog,
     private authService: AuthService,
     private inventaireService: InventaireService,
     private articleService: DescriptionArticleService
@@ -53,7 +55,22 @@ export class InventaireComponent implements OnInit {
       }).valueChanges.subscribe(nouveau => {
         // init les variables
         this.inventaireService.nouveauInventaire = nouveau.data.inventaires[0];
-        this.affichageData = this.groupArticlesByNno();
+
+
+        // Si aucun inventaire est en cours
+        if (this.inventaireService.ancientInventaire.id === this.inventaireService.nouveauInventaire.id) {
+          const myDialog = this.dialog.open(DialogInventaireComponent, {
+            width: '250px'
+          });
+
+          myDialog.afterClosed().subscribe(result => {
+            if (this.inventaireService.ancientInventaire.id !== this.inventaireService.nouveauInventaire.id) {
+              this.affichageData = this.groupArticlesByNno();
+            }
+          });
+        } else {
+          this.affichageData = this.groupArticlesByNno();
+        }
       });
     });
   }
@@ -125,4 +142,26 @@ export class InventaireComponent implements OnInit {
     this.articleService.setArticle(article);
   }
 }
+
+@Component({
+  selector: 'app-new-inventaire',
+  templateUrl: './newInventaire/dialog.component.html',
+})
+export class DialogInventaireComponent {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogInventaireComponent>,
+    private inventaireService: InventaireService,
+  ) { }
+
+  onNoClick(): void {
+    this.dialogRef.close();
+  }
+
+  newInventaire(): void {
+    this.inventaireService.nouvelInventaire();
+    this.dialogRef.close();
+  }
+}
+
 

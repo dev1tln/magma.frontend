@@ -4,17 +4,17 @@ import { HomeInventaireComponent } from './pages/homeInventaire/homeInventaire.p
 import { BrowserModule } from '@angular/platform-browser';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MaterialModule } from '../../material.module';
-import { InventaireComponent } from './components/inventaire/inventaire.component';
+import { InventaireComponent, DialogInventaireComponent } from './components/inventaire/inventaire.component';
 import { MenuInventaireComponent } from './components/menuInventaire/menuInventaire.component';
 import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
 import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
-import { ScannerComponent } from './components/scanner/scanner.component';
+import { ScannerComponent, PopupInfosComponent } from './components/scanner/scanner.component';
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
-import { PopupInfosComponent } from './components/scanner/popup-infos/popup-infos.component';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
+import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
 
 
 
@@ -38,6 +38,11 @@ import { ZXingScannerModule } from '@zxing/ngx-scanner';
     MenuInventaireComponent,
     QrScannerComponent,
     PopupInfosComponent,
+    ScannerPageComponent,
+    DialogInventaireComponent
+  ],
+  entryComponents: [
+    PopupInfosComponent, DialogInventaireComponent
   ],
   providers: [],
 })

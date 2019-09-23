@@ -3,13 +3,13 @@ import { Article } from 'src/app/shared/models/model';
 
 @Injectable()
 export class DescriptionArticleService {
-  private article: Article;
+  private article: any;
 
-  getArticle(): Article {
+  getArticle(): any {
     return this.article;
   }
 
-  setArticle(article: Article) {
+  setArticle(article: any) {
     this.article = article;
   }
 }

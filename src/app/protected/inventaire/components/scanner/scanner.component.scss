@@ -1,23 +1,39 @@
-canvas {
-  width: 320px !important;
-  height: 480px !important;
+:host zxing-scanner::ng-deep {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
-.example-small-box, .example-large-box {
+::ng-deep video {
+  height: 85vh !important;
+  width: 100% !important;
+}
+
+#retourArrow {
+  z-index: 2;
+  margin-top: 9%;
+  margin-left: 2%;
+}
+
+::ng-deep #infos {
+  display: block;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  padding: 0.5em;
+  background-color: #ffffff;
+}
+
+::ng-deep ul li span {
+  width: 50% !important;
+}
+
+::ng-deep .detailArticle li {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 16px;
-  padding: 16px;
-  border-radius: 8px;
-}
-
-.example-small-box {
-  height: 330px;
-  width: 490px;
-}
-
-.example-large-box {
-  height: 250px;
-  width: 320px;
+  padding: 0.3em 0;
+  border-bottom: 1px solid #d8d8d8;
 }

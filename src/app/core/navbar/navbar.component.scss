@@ -7,7 +7,6 @@ $primary: map-get($custom-theme, primary);
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
   display: flex;
   align-items: center;
   background: map-color(primary, lighter);
