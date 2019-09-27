@@ -37,24 +37,23 @@ export class InventaireComponent implements OnInit {
       return;
     }
 
-    this.apollo.watchQuery<any>({
+    this.apollo.query<any>({
       query: INVENTAIRE_ANCIENT,
       variables: {
         detention: this.inventaireService.getDetention(),
       }
-    }).valueChanges.subscribe(ancient => {
+    }).subscribe(ancient => {
 
       this.inventaireService.ancientInventaire = ancient.data.inventaires[0];
 
-      this.apollo.watchQuery<any>({
+      this.apollo.query<any>({
         query: INVENTAIRE_NOUVEAU,
         variables: {
           detention: this.inventaireService.getDetention(),
         }
-      }).valueChanges.subscribe(nouveau => {
+      }).subscribe(nouveau => {
         // init les variables
         this.inventaireService.nouveauInventaire = nouveau.data.inventaires[0];
-
 
         // Si aucun inventaire est en cours
         if (this.inventaireService.ancientInventaire.id === this.inventaireService.nouveauInventaire.id) {
@@ -64,6 +63,7 @@ export class InventaireComponent implements OnInit {
 
           myDialog.afterClosed().subscribe(result => {
             if (this.inventaireService.ancientInventaire.id !== this.inventaireService.nouveauInventaire.id) {
+
               this.affichageData = this.groupArticlesByNno();
             }
           });
