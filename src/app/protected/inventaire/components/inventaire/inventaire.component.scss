@@ -1,9 +1,22 @@
+@import 'src/theme.scss';
+
+$primary: map-get($custom-theme, primary);
+
 ::ng-deep .mat-expansion-indicator::after {
   display: none !important;
 }
 
 #toolbar-inventaire {
-  color: white;
+  color: mat-color($primary, darker);
+  background: mat-color($primary, lighter);
+}
+
+#toolbar-inventaire h1{
+  font-weight: 300;
+  margin: 0;
+  padding: 28px 8px;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 #nno-info {
@@ -19,14 +32,14 @@
 
 .inventaire-item {
   position: relative;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.25rem;
   border-color: #f9f9f9;
 }
 
 .inventaire-item-valide {
   position: relative;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.25rem;
   color: #155724;
   background-color: #d4edda !important;
@@ -35,7 +48,7 @@
 
 .inventaire-item-nouveau {
   position: relative;
-  border: 5px solid transparent;
+  border: 2px solid transparent;
   border-radius: 0.25rem;
   color: #856404;
   background-color: #fff3cd !important;
