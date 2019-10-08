@@ -1,6 +1,6 @@
-import { Component, ViewChild, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, ViewChild, OnInit, Output, EventEmitter, Inject } from '@angular/core';
 import { ZXingScannerComponent } from '@zxing/ngx-scanner';
-import { MatBottomSheet, MatBottomSheetRef } from '@angular/material';
+import { MatBottomSheet, MatBottomSheetRef, MatSnackBar, MAT_SNACK_BAR_DATA } from '@angular/material';
 import { Location } from '@angular/common';
 import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
 import { InventaireService } from 'src/app/shared/services/inventaires.service';
@@ -19,6 +19,7 @@ export class ScannerComponent {
 
   constructor(
     private _bottomSheet: MatBottomSheet,
+    private _snackBar: MatSnackBar,
     private location: Location,
     private descriptionArticle: DescriptionArticleService,
     private inventaireService: InventaireService,
@@ -37,7 +38,24 @@ export class ScannerComponent {
   scan(event) {
     if (this.qrCode !== event) {
       this.qrCode = event;
-      this.inventaireService.ajouterArticleScanne(this.getQrDecoup());
+      this.inventaireService.ajouterArticleScanne(this.getQrDecoup())
+        .then(result => {
+          this._snackBar.openFromComponent(AlertInfoComponent, {
+          duration: 6000,
+          verticalPosition: 'top',
+          panelClass: ['alert-succes'],
+          data: {bool: 'true', message: ''},
+          });
+        })
+        .catch(
+          err => {
+            this._snackBar.openFromComponent(AlertInfoComponent, {
+              duration: 6000,
+              verticalPosition: 'top',
+              panelClass: ['alert-error'],
+              data: { bool: 'false', message: err },
+          });
+        });
       this.openBottomSheet();
     }
   }
@@ -71,6 +89,7 @@ export class ScannerComponent {
 @Component({
   selector: 'app-popup-infos',
   templateUrl: './popup-infos/popup-infos.component.html',
+  styleUrls: ['./popup-infos/popup-infos.component.scss'],
 })
 export class PopupInfosComponent implements OnInit {
 
@@ -88,6 +107,15 @@ export class PopupInfosComponent implements OnInit {
     this._bottomSheetRef.dismiss();
     event.preventDefault();
   }
+}
+
+@Component({
+  selector: 'app-alert-infos',
+  templateUrl: './alert/alert.component.html',
+  styleUrls: ['./alert/alert.component.scss'],
+})
+export class AlertInfoComponent {
+  constructor(@Inject(MAT_SNACK_BAR_DATA) public data: any) { }
 }
 
 
