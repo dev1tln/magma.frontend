@@ -15,6 +15,7 @@ import { DescriptionArticleComponent } from './pages/descriptionArticle/descript
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
+import { CreationArticleComponent } from './components/creation-article/creation-article.component';
 
 
 
@@ -40,7 +41,8 @@ import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
     PopupInfosComponent,
     ScannerPageComponent,
     DialogInventaireComponent,
-    AlertInfoComponent
+    AlertInfoComponent,
+    CreationArticleComponent
   ],
   entryComponents: [
     PopupInfosComponent, DialogInventaireComponent, AlertInfoComponent
