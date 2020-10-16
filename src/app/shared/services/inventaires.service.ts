@@ -78,6 +78,9 @@ export class InventaireService {
   // Creer un nouvel inventaire
   nouvelInventaire() {
 
+    // TODO moin moche si possible
+    this.nouveauInventaire.id = null;
+
     this.apollo.mutate({
       mutation: CREATE_INVENTAIRE,
       variables: {
@@ -102,6 +105,7 @@ export class InventaireService {
           },
           variables: { detention: this.detentionId }
         });
+        this.nouveauInventaire = createInventaire;
       }
     }).subscribe();
   }

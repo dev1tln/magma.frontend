@@ -1,7 +1,7 @@
 <app-header [title]="article.lib"></app-header>
 <div id="containerPhoto">
 
-  <img id="phtoArticle" *ngIf="article.pictureUrl !== null" [attr.src]="article.pictureUrl | secure| async"
+  <img id="phtoArticle" *ngIf="article.pictureUrl !== null" [attr.src]="'http://'+environment.graphqlUrl+article.pictureUrl | secure| async"s
     alt="'Photo : {{article.lib}}'" />
 
 </div>

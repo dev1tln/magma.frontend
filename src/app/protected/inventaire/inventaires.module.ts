@@ -10,7 +10,7 @@ import { AppRoutingModule } from '../../app-routing.module';
 import { HeaderInventaireComponent } from './components/headerInventaire/headerInventaire.component';
 import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
-import { ScannerComponent, PopupInfosComponent } from './components/scanner/scanner.component';
+import { ScannerComponent, PopupInfosComponent, AlertInfoComponent } from './components/scanner/scanner.component';
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
@@ -39,10 +39,11 @@ import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
     QrScannerComponent,
     PopupInfosComponent,
     ScannerPageComponent,
-    DialogInventaireComponent
+    DialogInventaireComponent,
+    AlertInfoComponent
   ],
   entryComponents: [
-    PopupInfosComponent, DialogInventaireComponent
+    PopupInfosComponent, DialogInventaireComponent, AlertInfoComponent
   ],
   providers: [],
 })

@@ -9,10 +9,6 @@ $warn: map-get($custom-theme, warn);
   width: 100%;
   height: 2.9rem;
   background-color: mat-color($warn);
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .my-footbar :nth-child(1n) {
@@ -20,15 +16,15 @@ $warn: map-get($custom-theme, warn);
   width: auto;
 }
 
-.my-footbar a {
+#mat-label-content {
   height: 100%;
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color: white;
 }
 
-.my-footbar a mat-icon {
+#mat-footbar-icon {
   font-size: 2.3em;
 }

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Article } from 'src/app/shared/models/model';
 import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -10,6 +11,7 @@ import { DescriptionArticleService } from 'src/app/shared/services/descriptionAr
 })
 export class DescriptionArticleComponent implements OnInit {
   article: Article;
+  environment = environment;
   constructor(private descriptionArticle: DescriptionArticleService) { }
 
   ngOnInit(): void {

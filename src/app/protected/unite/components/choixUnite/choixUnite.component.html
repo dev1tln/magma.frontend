@@ -1,7 +1,7 @@
 <mat-vertical-stepper [linear]="true" #stepper>
   <mat-step [stepControl]="uniteFormGroup">
     <form [formGroup]="uniteFormGroup">
-      <ng-template matStepLabel>Choix unité</ng-template>
+      <ng-template matStepLabel>Unité</ng-template>
 
       <mat-form-field>
         <input matInput type="text" placeholder="Unité" formControlName="firstCtrl" required [matAutocomplete]="auto" />
@@ -19,7 +19,7 @@
 
   <mat-step [stepControl]="detentionFormGroup">
     <form [formGroup]="detentionFormGroup" (ngSubmit)="onSubmit()">
-      <ng-template matStepLabel>Choix détention</ng-template>
+      <ng-template matStepLabel>Détention</ng-template>
       <mat-form-field>
         <input type="text" matInput placeholder="Detention" formControlName="secondCtrl" required
           [matAutocomplete]="auto2" />

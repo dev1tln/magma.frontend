@@ -7,7 +7,7 @@
       <ul fxLayout fxLayoutGap="10px" class="my-toolbar-items">
         <li>
           <div id="logoContainer" fxLayout="row" fxAlignItem="center">
-            <img id='logoMaars' src='../../../assets/img/logo.png' alt='magmga' />
+            <img id='logoMaars' src='/assets/img/logo.png' alt='magmga' />
             <h3>MAGMA</h3>
           </div>
         </li>
@@ -29,7 +29,7 @@
             <mat-icon>more_vert</mat-icon>
           </button>
           <mat-menu #options="matMenu">
-            <button mat-menu-item>
+            <button mat-menu-item (click)="logout()">
               <mat-icon>exit_to_app</mat-icon>
               <span>Se deconnecter</span>
             </button>
