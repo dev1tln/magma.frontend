@@ -7,7 +7,7 @@ import { PageChoixUniteComponent } from './protected/unite/pages/choixUnite/choi
 import { HomeUniteComponent } from './protected/unite/pages/homeUnite/homeUnite.page';
 import { DescriptionArticleComponent } from './protected/inventaire/pages/descriptionArticle/descriptionArticle.page';
 import { ScannerPageComponent } from './protected/inventaire/pages/scannerPage/scannerPage.page';
-import { CreationarticleComponent } from './protected/inventaire/pages/creationarticle/creationarticle.page';
+import { CreationarticlePage } from './protected/inventaire/pages/creationarticle/creationarticle.page';
 
 
 const routes: Routes = [
@@ -34,7 +34,7 @@ const routes: Routes = [
   {
     path: 'inventaire', component: MenuInventaireComponent, children: [
       { path: '', component: HomeInventaireComponent },
-      { path: 'creationarticle', component: CreationarticleComponent }
+      { path: 'creationarticle', component: CreationarticlePage }
     ]
   }
   ,

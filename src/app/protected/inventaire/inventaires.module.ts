@@ -11,11 +11,13 @@ import { HeaderInventaireComponent } from './components/headerInventaire/headerI
 import { QrScannerComponent } from 'angular2-qrscanner';
 import { CoreModule } from 'src/app/core/core.module';
 import { ScannerComponent, PopupInfosComponent, AlertInfoComponent } from './components/scanner/scanner.component';
+import { CreationarticleComponent } from './components/creationarticle/creationarticle.component';
+
 import { DescriptionArticleComponent } from './pages/descriptionArticle/descriptionArticle.page';
 import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
-import { CreationarticleComponent } from './pages/creationarticle/creationarticle.page';
+import { CreationarticlePage } from './pages/creationarticle/creationarticle.page';
 
 
 
@@ -35,6 +37,7 @@ import { CreationarticleComponent } from './pages/creationarticle/creationarticl
     HomeInventaireComponent,
     DescriptionArticleComponent,
     ScannerComponent,
+    CreationarticleComponent,
     InventaireComponent,
     MenuInventaireComponent,
     QrScannerComponent,
@@ -42,7 +45,7 @@ import { CreationarticleComponent } from './pages/creationarticle/creationarticl
     ScannerPageComponent,
     DialogInventaireComponent,
     AlertInfoComponent,
-    CreationarticleComponent
+    CreationarticlePage
   ],
   entryComponents: [
     PopupInfosComponent, DialogInventaireComponent, AlertInfoComponent
