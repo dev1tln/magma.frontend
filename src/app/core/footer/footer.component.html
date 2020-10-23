@@ -1,5 +1,8 @@
 <nav mat-tab-nav-bar class="my-footbar">
-  <a mat-tab-link *ngFor="let link of links" (click)="activeLink = link" [active]="activeLink == link">
+  <a mat-tab-link *ngFor="let link of links" 
+  [routerLink]="link.link"
+  (click)="activeLink = link" 
+  [active]="activeLink == link">
   <div id="mat-label-content">
     <mat-icon id="my-footbar-icon" outlined>{{link.icon}}</mat-icon>
     {{link.nom}}

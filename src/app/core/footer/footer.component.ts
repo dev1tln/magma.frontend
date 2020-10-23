@@ -10,7 +10,7 @@ export class FooterComponent {
     { nom: 'Inventaires', icon: 'edit' },
     { nom: 'Mouvements', icon: 'swap_horiz' },
     { nom: 'Restitutions', icon: 'local_printshop' },
-    { nom: 'Creation Article et QRcode', icon: 'qr_code' }
+    { nom: 'création article et QRcode', icon: 'qr_code',link:'/inventaire/creationarticle' }
   ];
   activeLink = this.links[0];
 }
