@@ -17,8 +17,8 @@ import { PipeModule } from 'src/app/shared/pipes/pipe.module';
 import { ZXingScannerModule } from '@zxing/ngx-scanner';
 import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
 import { CreationarticlePage } from './pages/creationarticle/creationarticle.page';
-
-
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -30,6 +30,8 @@ import { CreationarticlePage } from './pages/creationarticle/creationarticle.pag
     MaterialModule,
     CoreModule,
     ZXingScannerModule,
+    NgxQRCodeModule ,
+    FormsModule ,
   ],
   declarations: [
     HeaderInventaireComponent,

@@ -29,6 +29,8 @@ import { DescriptionArticleService } from './shared/services/descriptionArticle.
     InventaireModule,
     UniteModule,
     PublicModule,
+    
+
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
