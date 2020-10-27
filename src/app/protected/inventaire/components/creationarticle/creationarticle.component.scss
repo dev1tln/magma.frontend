@@ -16,3 +16,10 @@ textarea {
     width: 250px;
     opacity: .5;
 }
+
+DIV.container {
+  min-height: 10em;
+  display: table-cell;
+  vertical-align: middle ;
+  text-align: center;
+}

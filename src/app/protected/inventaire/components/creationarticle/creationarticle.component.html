@@ -1,12 +1,20 @@
-<p>creationarticle works!</p>
-<textarea [(ngModel)] = "value"></textarea>
-
-<ngx-qrcode
+<div class="header-page">
+  <h1>Creation d'un article</h1>
+</div>
+<div id="ident" class="container" >
+  <mat-label>Identifiant: </mat-label>
+ <textarea [(ngModel)] = "value"> </textarea> <!-- text for qrcode generator-->
+<br>
+<div id="print-section" >
+  <ngx-qrcode
   [elementType]="elementType"
   [errorCorrectionLevel]="correctionLevel"
   [value]="value"
-  cssClass="bshadow"></ngx-qrcode>
-  <textarea [(ngModel)] = "value"></textarea>
+  ></ngx-qrcode>  <!-- qrcode generator-->
+</div>
+<br>
+<button [useExistingCss]="true" printSectionId="print-section" ngxPrint> <mat-icon
+ aria-label="print">print</mat-icon></button>  <!--Your relevant print button-->
 
 
-
+</div>

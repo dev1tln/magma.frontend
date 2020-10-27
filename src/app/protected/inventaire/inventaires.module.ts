@@ -19,6 +19,7 @@ import { ScannerPageComponent } from './pages/scannerPage/scannerPage.page';
 import { CreationarticlePage } from './pages/creationarticle/creationarticle.page';
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { FormsModule } from '@angular/forms';
+import {NgxPrintModule} from 'ngx-print';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { FormsModule } from '@angular/forms';
     ZXingScannerModule,
     NgxQRCodeModule ,
     FormsModule ,
+    NgxPrintModule,
   ],
   declarations: [
     HeaderInventaireComponent,
