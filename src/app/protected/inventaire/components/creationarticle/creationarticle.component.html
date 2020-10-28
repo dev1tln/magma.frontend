@@ -1,10 +1,12 @@
 <div class="header-page">
-  <h1>Creation d'un article</h1>
+  <h1>Cr&egrave;ation d'un QRcode</h1>
 </div>
+<br>
+
 <div id="ident" class="container" >
   <mat-label>Identifiant: </mat-label>
  <textarea [(ngModel)] = "value"> </textarea> <!-- text for qrcode generator-->
-<br>
+
 <div id="print-section" >
   <ngx-qrcode
   [elementType]="elementType"
@@ -13,8 +15,8 @@
   ></ngx-qrcode>  <!-- qrcode generator-->
 </div>
 <br>
+
 <button [useExistingCss]="true" printSectionId="print-section" ngxPrint> <mat-icon
  aria-label="print">print</mat-icon></button>  <!--Your relevant print button-->
-
 
 </div>
