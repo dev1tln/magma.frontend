@@ -22,6 +22,10 @@ export class InventaireService {
     return this.detentionId;
   }
 
+  getLibelleDetention(): string {
+    return "GSBDD Toulon-Antenne Lamalgue - 7111 ";
+  }
+
   // Ajoute un article en inventaire
   async ajouterArticleScanne(article: any) {
     await this.controlesInventaire(article).catch(err => { throw err; });

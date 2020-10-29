@@ -107,3 +107,10 @@ $primary: map-get($custom-theme, primary);
   bottom: 10%;
   right: 4%;
 }
+
+#goToPRINT {
+  position: fixed;
+  z-index: 3;
+  bottom: 10%;
+  right: 10%;
+}

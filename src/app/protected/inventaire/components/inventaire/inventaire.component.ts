@@ -85,7 +85,7 @@ export class InventaireComponent implements OnInit {
       return groups;
     }, new Map<string, Article[]>());
 
-    // On regroupe les ancient avec les nouveaux articles
+    // On regroupe les anciens avec les nouveaux articles
     result = this.inventaireService.nouveauInventaire.articles.reduce((groups, article) => {
       const nno = article.nno;
       const array = groups.get(nno) || [];
@@ -117,6 +117,12 @@ export class InventaireComponent implements OnInit {
       if (this.nouveau(article)) { cpt++; }
     });
     return cpt;
+  }
+  detention(){
+    return(
+      this.inventaireService.getLibelleDetention()
+    ) ;
+      
   }
 
   manquant(art: Article): boolean {

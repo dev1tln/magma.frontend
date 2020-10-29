@@ -1,9 +1,17 @@
 <mat-toolbar id="toolbar-inventaire">
-  <h1>Inventaire en cours</h1>
+  <h1>Inventaire en cours </h1>
+ 
+ 
     <button mat-fab id="goToScanner" [routerLink]="['/inventaire/scanner']">
       <img id='iconeQrcode' src='../../../assets/img/QRCODE.png' alt='qrcode' />
   </button>
-</mat-toolbar>
+  <button mat-fab id="goToPrint" [useExistingCss]="true" printSectionId="print-section" ngxPrint> <mat-icon
+    aria-label="print">print</mat-icon>
+  </button>  <!-- print button inventaire-->
+ </mat-toolbar>
+
+<div id="print-section" >
+ {{detention()}}
 <mat-accordion [multi]="true">
   <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue">
     <mat-expansion-panel-header [ngClass]="{
@@ -36,3 +44,4 @@
   </mat-expansion-panel>
 </mat-accordion>
 
+</div>
