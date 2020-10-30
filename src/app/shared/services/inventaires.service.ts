@@ -8,6 +8,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class InventaireService {
   private detentionId: string = null;
+  private detentionLibelle: string = null;
 
   ancientInventaire: Inventaire;
   nouveauInventaire: Inventaire;
@@ -22,8 +23,11 @@ export class InventaireService {
     return this.detentionId;
   }
 
+  setDetentionLibelle(libelle: string) {
+    this.detentionLibelle = libelle;
+  }
   getLibelleDetention(): string {
-    return "GSBDD Toulon-Antenne Lamalgue - 7111 ";
+     return this.detentionLibelle;
   }
 
   // Ajoute un article en inventaire
