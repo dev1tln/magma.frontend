@@ -92,6 +92,7 @@ export class ChoixUniteComponent implements OnInit {
   onSubmit() {
     if (this.detentionFormGroup.get('secondCtrl').value.id) {
       this.inventaireService.setDetention(this.detentionFormGroup.get('secondCtrl').value.id);
+      this.inventaireService.setDetentionLibelle( this.detentionFormGroup.get('secondCtrl').value.lib);
       this.router.navigateByUrl('/inventaire');
     }
   }
