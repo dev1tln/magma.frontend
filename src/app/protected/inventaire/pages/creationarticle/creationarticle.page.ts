@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./creationarticle.page.scss']
 })
 export class CreationarticlePage implements OnInit {
-
+  private titre: string = 'Creation QRcode';
+  
   constructor() { }
 
   ngOnInit() {
+
   }
 
 }
