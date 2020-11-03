@@ -1,6 +1,14 @@
-<app-header [title]="article.lib"></app-header>
-<div id="containerPhoto">
+<div id="print-section" >
+<mat-toolbar id="toolbar-detail">
 
+<app-header [title]="article.lib"></app-header>
+
+<button mat-fab id="goToPrint" [useExistingCss]="true" printSectionId="print-section" ngxPrint> <mat-icon
+  aria-label="print">print</mat-icon>
+</button>  <!-- print button article-->
+</mat-toolbar>
+
+<div id="containerPhoto">
   <img id="phtoArticle" *ngIf="article.pictureUrl !== null" [attr.src]="'http://'+environment.graphqlUrl+article.pictureUrl | secure| async"s
     alt="'Photo : {{article.lib}}'" />
 
@@ -30,3 +38,4 @@
   <mat-tab label="Mouvements">
   </mat-tab>
 </mat-tab-group>
+</div>

@@ -9,7 +9,7 @@ export class FooterComponent {
   links = [
     { nom: 'Inventaires', icon: 'edit' },
     { nom: 'Mouvements', icon: 'swap_horiz' },
-    { nom: 'Restitutions', icon: 'local_printshop' },
+    { nom: 'Restitutions', icon: 'local_printshop', link:'/inventaire/restitution'},
     { nom: 'création QRcode', icon: 'qr_code',link:'/inventaire/creationarticle' }
   ];
   activeLink = this.links[0];

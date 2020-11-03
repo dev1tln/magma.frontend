@@ -20,7 +20,8 @@ import { CreationarticlePage } from './pages/creationarticle/creationarticle.pag
 import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 import { FormsModule } from '@angular/forms';
 import {NgxPrintModule} from 'ngx-print';
-
+import { RestitutionComponent } from './components/restitution/restitution.component';
+import { RestitutionPage } from './pages/restitution/restitution.page';
 @NgModule({
   imports: [
     CommonModule,
@@ -48,7 +49,9 @@ import {NgxPrintModule} from 'ngx-print';
     ScannerPageComponent,
     DialogInventaireComponent,
     AlertInfoComponent,
-    CreationarticlePage
+    CreationarticlePage,
+    RestitutionComponent,
+    RestitutionPage
   ],
   entryComponents: [
     PopupInfosComponent, DialogInventaireComponent, AlertInfoComponent

@@ -8,7 +8,7 @@ import { HomeUniteComponent } from './protected/unite/pages/homeUnite/homeUnite.
 import { DescriptionArticleComponent } from './protected/inventaire/pages/descriptionArticle/descriptionArticle.page';
 import { ScannerPageComponent } from './protected/inventaire/pages/scannerPage/scannerPage.page';
 import { CreationarticlePage } from './protected/inventaire/pages/creationarticle/creationarticle.page';
-
+import { RestitutionPage } from './protected/inventaire/pages/restitution/restitution.page';
 
 const routes: Routes = [
   { path: '', redirectTo: 'auth', pathMatch: 'full' },
@@ -35,6 +35,13 @@ const routes: Routes = [
     path: 'inventaire', component: MenuInventaireComponent, children: [
       { path: '', component: HomeInventaireComponent },
       { path: 'creationarticle', component: CreationarticlePage }
+    ]
+  }
+  ,
+  {
+    path: 'inventaire', component: MenuInventaireComponent, children: [
+      { path: '', component: HomeInventaireComponent },
+      { path: 'restitution', component: RestitutionPage }
     ]
   }
   ,

@@ -15,8 +15,8 @@
 <mat-accordion [multi]="true">
   <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue">
     <mat-expansion-panel-header [ngClass]="{
-      'inventaire-item' : compteManquant(nno.value)!==0 && compteNouveau(nno.value)===0,
-      'inventaire-item-valide' : compteManquant(nno.value)===0 && compteNouveau(nno.value)===0,
+      'inventaire-item'         : compteManquant(nno.value)!==0 && compteNouveau(nno.value)===0,
+      'inventaire-item-valide'  : compteManquant(nno.value)===0 && compteNouveau(nno.value)===0,
       'inventaire-item-nouveau' : compteNouveau(nno.value)>0
     }">
       <mat-panel-title>
