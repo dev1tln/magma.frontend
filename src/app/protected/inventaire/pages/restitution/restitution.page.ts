@@ -6,10 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./restitution.page.scss']
 })
 export class RestitutionPage implements OnInit {
-  private titre: string = 'Restitutions';
+  
   constructor() { }
 
   ngOnInit() {
+    
   }
 
 }

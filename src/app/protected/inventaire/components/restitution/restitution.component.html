@@ -1,1 +1,45 @@
-<p>restitution component works!</p>
+
+<mat-toolbar id="toolbar-restitution">
+    <app-header [title]="titre"></app-header>  
+     <button mat-fab id="goToPrint" [useExistingCss]="true" printSectionId="printsection" ngxPrint> <mat-icon
+      aria-label="print">print</mat-icon>
+    </button>  <!-- print button inventaire-->
+   </mat-toolbar>
+    <button mat-flat-button color="primary" (click)="openAllPanels()"><b>Tout voir</b></button> &nbsp;
+    <button mat-flat-button color="primary" (click)="closeAllPanels()"><b>Tout fermer</b></button>
+
+  <div id="printsection" >
+    <h3>Détention: {{detention()}} </h3>
+ 
+  <mat-accordion   [multi]="true" #accordion="matAccordion" >
+    <mat-expansion-panel *ngFor="let nno of affichageData | keyvalue" > 
+      <mat-expansion-panel-header [ngClass]="{
+        'inventaire-item'         : compteManquant(nno.value)!==0 && compteNouveau(nno.value)===0,
+        'inventaire-item-valide'  : compteManquant(nno.value)===0 && compteNouveau(nno.value)===0,
+        'inventaire-item-nouveau' : compteNouveau(nno.value)>0
+      }">
+        <mat-panel-title>
+          <span matBadge="{{compteNouveau(nno.value)}}" matBadgeColor="warn"
+            [matBadgeHidden]="compteNouveau(nno.value)===0" matBadgeOverlap="false">{{nno.value[0].lib}}</span>
+        </mat-panel-title>
+        <mat-panel-description id="nno-info">
+          {{nno.key}}  
+        </mat-panel-description>
+        <mat-icon *ngIf="compteManquant(nno.value)==0; else missBlock">check_circle_outline</mat-icon>
+        <ng-template #missBlock>
+          <div id="nombre-manquant">{{compteManquant(nno.value)}}</div>
+        </ng-template>
+      </mat-expansion-panel-header>
+      <mat-list>
+        
+        <mat-list-item  *ngFor="let article of nno.value" >
+          <span>{{article.numref}}</span>
+          <span id="numserie" *ngIf="article.numser !== null">{{article.numser}}</span>
+          <span id="typart" *ngIf="article.typeart !== null">{{article.typart}}</span>
+        </mat-list-item>
+      </mat-list>
+    
+    </mat-expansion-panel>
+  </mat-accordion>
+  
+  </div>
