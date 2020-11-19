@@ -22,6 +22,7 @@ import { FormsModule } from '@angular/forms';
 import {NgxPrintModule} from 'ngx-print';
 import { RestitutionComponent } from './components/restitution/restitution.component';
 import { RestitutionPage } from './pages/restitution/restitution.page';
+
 @NgModule({
   imports: [
     CommonModule,

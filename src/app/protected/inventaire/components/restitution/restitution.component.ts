@@ -9,7 +9,10 @@ import { Router } from '@angular/router';
 import { DescriptionArticleService } from 'src/app/shared/services/descriptionArticle.service';
 import { MatDialog, MatDialogRef } from '@angular/material';
 import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
-
+import pdfMake from 'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+import {Pipe, PipeTransform} from '@angular/core';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 
 @Component({
   selector: 'app-restitution',
@@ -19,6 +22,7 @@ import {MatAccordion, MatExpansionModule} from '@angular/material/expansion';
 export class RestitutionComponent implements OnInit { 
   @ViewChild('accordion',{static:true}) Accordion: MatAccordion;
   affichageData: Map<string, Article[]>;private titre: string = 'Restitutions';
+  
   constructor(
     
     private apollo: Apollo,
@@ -29,6 +33,53 @@ export class RestitutionComponent implements OnInit {
     private articleService: DescriptionArticleService
   ) { }
 
+  
+  generatePdf(action = 'open') {
+   
+    function buildTableBody(data, columns) {
+      var body = [];
+  
+      body.push(columns);
+  
+      data.forEach(function(row) {
+          var dataRow = [];
+  
+          columns.forEach(function(column) {
+              dataRow.push(row[column].toString());
+          })
+  
+          body.push(dataRow);
+      });
+  
+      return body;
+    }
+    function table(data,columns) {
+      return {
+          table: {
+              headerRows: 1,
+              body: buildTableBody(data, columns)
+          }
+      };
+  }
+
+      let docDefinition = {      
+      header: 'Restitution Exemple 1',      
+      content:[
+        { text: "Gisement:"+this.detention(), style: 'header' },
+       // table(externalDataRetrievedFromServer, ['name',])
+       table(this.inventaireService.ancientInventaire.articles, ['nno','lib',])
+    ]
+    
+    };    
+    switch (action) {
+      case 'open': pdfMake.createPdf(docDefinition).open(); break;
+      case 'print': pdfMake.createPdf(docDefinition).print(); break;
+      case 'download': pdfMake.createPdf(docDefinition).download(); break;
+      default: pdfMake.createPdf(docDefinition).open(); break;
+    }
+  }
+
+ 
   closeAllPanels(){
     this.Accordion.closeAll();
   }

@@ -4,8 +4,17 @@
      <button mat-fab id="goToPrint" [useExistingCss]="true" printSectionId="printsection" ngxPrint> <mat-icon
       aria-label="print">print</mat-icon>
     </button>  <!-- print button inventaire-->
-   </mat-toolbar>
-    <button mat-flat-button color="primary" (click)="openAllPanels()"><b>Tout voir</b></button> &nbsp;
+
+    
+ 
+    <button  mat-button id="PdfMake"  (click)="generatePdf('open')" >Restitution 1
+      <mat-icon   aria-label="print">print</mat-icon>
+    </button> <!-- print button with pdfMake-->
+   
+  
+  </mat-toolbar>
+   
+   <button mat-flat-button color="primary" (click)="openAllPanels()"><b>Tout voir</b></button> &nbsp;
     <button mat-flat-button color="primary" (click)="closeAllPanels()"><b>Tout fermer</b></button>
 
   <div id="printsection" >
